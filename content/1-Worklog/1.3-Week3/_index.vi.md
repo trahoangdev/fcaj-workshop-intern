@@ -1,59 +1,37 @@
 ---
 title: "Worklog Tuần 3"
-date: 2024-01-01
+date: 2026-05-04
 weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
+<!-- {{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+{{% /notice %}} -->
 
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Thực hành data protection với AWS Backup, bao gồm backup plan, notification và restore testing.
+* Tìm hiểu hybrid file storage với AWS Storage Gateway (File Gateway).
+* Nắm các kiến thức cơ bản về Amazon S3 và static website hosting, cùng các tính năng như versioning và replication.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2 | - Thực hành AWS Backup: <br>&emsp; + Triển khai hạ tầng lab <br>&emsp; + Tạo backup plan <br>&emsp; + Cấu hình SNS notifications <br>&emsp; + Kiểm thử restore và cleanup | 04/05/2026 | 04/05/2026 | [AWS Backup](https://000013.awsstudygroup.com/) |
+| 3 | - Thực hành AWS Storage Gateway (File Gateway): <br>&emsp; + Chuẩn bị môi trường <br>&emsp; + Tạo Storage Gateway và file share <br>&emsp; + Mount file share lên máy on-premises <br>&emsp; + Cleanup tài nguyên | 05/05/2026 | 05/05/2026 | [AWS Storage Gateway](https://000024.awsstudygroup.com/) |
+| 4 | - Thực hành Amazon S3 cơ bản và static website hosting: <br>&emsp; + Tạo bucket và bật static website <br>&emsp; + Cấu hình public access block và public object <br>&emsp; + Test website | 06/05/2026 | 06/05/2026 | [Amazon S3](https://000057.awsstudygroup.com/) |
+| 5 | - Tiếp tục với Amazon S3: <br>&emsp; + Tăng tốc static website bằng CloudFront <br>&emsp; + Bật bucket versioning <br>&emsp; + Move object | 07/05/2026 | 07/05/2026 | [Amazon S3](https://000057.awsstudygroup.com/) |
+| 6 | - Hoàn thiện lab Amazon S3: <br>&emsp; + Cấu hình replication đa region <br>&emsp; + Xem notes và best practices <br>&emsp; + Cleanup tài nguyên | 08/05/2026 | 08/05/2026 | [Amazon S3](https://000057.awsstudygroup.com/) |
 
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thành AWS Backup plan, cấu hình SNS notifications, kiểm thử restore và dọn dẹp tài nguyên lab.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Triển khai AWS Storage Gateway (File Gateway), tạo file share, mount lên máy on-premises và cleanup.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Triển khai static website trên Amazon S3, cấu hình public access, và kiểm tra truy cập qua CloudFront.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Thiết lập S3 versioning, move object và replication đa region, đồng thời tổng hợp notes/best practices và hoàn tất cleanup.

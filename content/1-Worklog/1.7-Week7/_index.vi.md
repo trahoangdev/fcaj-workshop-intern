@@ -55,5 +55,3 @@ pre: " <b> 1.7. </b> "
 
 * Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
 * ...
-
-
