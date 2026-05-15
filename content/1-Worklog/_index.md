@@ -20,7 +20,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 3:** [Practicing AWS Backup, Storage Gateway, and Amazon S3](1.3-week3/)
 
-**Week 4:** [Doing task C...](1.4-week4/)
+**Week 4:** [Practicing DynamoDB, VM migration, FSx, Storage Gateway, and advanced Amazon S3](1.4-week4/)
 
 **Week 5:** [Doing task D...](1.5-week5/)
 

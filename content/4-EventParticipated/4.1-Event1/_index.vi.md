@@ -1,125 +1,105 @@
 ---
-title: "Event 1"
+title: "Community Day at FCAJ HCM"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
+<!--{{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+{{% /notice %}}-->
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “Community Day at FCAJ HCM”
 
-### Mục Đích Của Sự Kiện
+### Mục đích của sự kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- **Hoàng Long** chia sẻ về cách **level up** trong công việc và sự nghiệp
+- **Nguyễn Thịnh** chia sẻ về **AI Hallucination** — hiểu bản chất, rủi ro và cách dùng AI an toàn hơn
+- **Nguyễn Khang** chia sẻ **kỹ năng sinh tồn** khi đi xin việc và làm việc tại văn phòng
+- **Nguyễn Phương Thảo** chia sẻ cách **vibecode** khi sử dụng phương pháp **BMAD**
 
-### Danh Sách Diễn Giả
+### Những người đồng hành tổ chức sự kiện
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Nguyễn Khang** – Solution Architect at CloudKinetics
+- **Nguyễn Thịnh** – DevOps Engineer | FCAJ Ambassador at AWS
+- **Hoàng Long** – FCAJ Ambassador at AWS
+- **Nguyễn Phương Thảo** – Cloud Engineer Intern at VIB | FCJ Ambassador at AWS
 
-### Nội Dung Nổi Bật
+### Nội dung nổi bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Hoàng Long – Level up trong công việc
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- Tư duy và thói quen để phát triển bản thân trong ngành công nghệ
+- Cách nâng kỹ năng, tăng giá trị đóng góp và giữ động lực khi đi làm
+- Kinh nghiệm từ FCAJ Ambassador về lộ trình tiến bộ từng bước, bền vững
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Nguyễn Thịnh – AI Hallucination
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+- **AI hallucination** là gì khi mô hình tạo nội dung nghe hợp lý nhưng sai sự thật
+- Rủi ro khi phụ thuộc AI trong DevOps, viết script, tra cứu kỹ thuật
+- Cách kiểm chứng kết quả, prompt hiệu quả và coi AI là trợ lý, không phải nguồn duy nhất
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### Nguyễn Khang – Kỹ năng sinh tồn khi xin việc và làm văn phòng
 
-#### Domain-Driven Design (DDD)
+- Chuẩn bị phỏng vấn, CV và cách thể hiện bản thân với nhà tuyển dụng
+- Kỹ năng mềm, văn hóa làm việc nhóm sau khi vào công ty
+- Góc nhìn thực tế từ Solution Architect về thích nghi môi trường văn phòng
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Nguyễn Phương Thảo – Vibecode với BMAD
 
-#### Event-Driven Architecture
+- **Vibecoding** — cách làm việc tập trung vào flow khi phát triển có hỗ trợ AI
+- Tổng quan phương pháp **BMAD** và các giai đoạn lập kế hoạch, build, lặp lại
+- Tài liệu tham khảo: [BMAD Method](https://docs.bmad-method.org)
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+### Những gì học được
 
-#### Compute Evolution
+- Phát triển sự nghiệp cần chủ đích: đặt mục tiêu, học liên tục và nhận feedback như **Hoàng Long** nhấn mạnh
+- Dùng AI phải đề phòng **hallucination**, luôn đối chiếu lệnh, config và tài liệu quan trọng (**Nguyễn Thịnh**)
+- Xin việc và hòa nhập team dễ hơn khi chuẩn bị kỹ và giữ thái độ chuyên nghiệp (**Nguyễn Khang**)
+- Phương pháp **BMAD** giúp vibecode có cấu trúc, tránh prompt lung tung (**Nguyễn Phương Thảo**)
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+### Ứng dụng vào công việc
 
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
-
-### Những Gì Học Được
-
-#### Tư Duy Thiết Kế
-
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
-
-#### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- Lập **kế hoạch level up** cá nhân (kỹ năng, chứng chỉ, project) và review hàng tháng
+- Thêm bước **kiểm chứng** mỗi khi AI sinh code, config hoặc tài liệu trước khi commit/deploy
+- Cập nhật CV, portfolio và câu chuyện phỏng vấn theo gợi ý từ phiên **xin việc**
+- Thử **BMAD** trên một task nhỏ (cá nhân hoặc thực tập) và ghi lại workflow hiệu quả
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia **“Community Day FCAJ HCM”** là một trải nghiệm rất bổ ích, giúp em kết nối với cộng đồng FCAJ tại TP. Hồ Chí Minh và học hỏi từ các bạn trong hệ sinh thái cloud, DevOps và chương trình AWS. Một số trải nghiệm nổi bật:
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Học hỏi từ đội ngũ tổ chức
+- **Nguyễn Khang**, **Nguyễn Thịnh**, **Hoàng Long** và **Nguyễn Phương Thảo** là những người đồng hành giúp sự kiện diễn ra suôn sẻ, chia sẻ góc nhìn từ kiến trúc giải pháp, DevOps và kỹ sư cloud.
+- Các phiên chia sẻ và trao đổi giúp em củng cố kỹ năng thực tế và tinh thần cộng đồng trong FCAJ/FCJ.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+#### Các phiên chia sẻ
+- **Hoàng Long** giúp em có hướng đi rõ hơn về cách **level up** thay vì chỉ chờ cơ hội đến.
+- **Nguyễn Thịnh** giúp em hiểu **AI hallucination** và vì sao phải kiểm chứng khi dùng AI trong DevOps và coding.
+- **Nguyễn Khang** chia sẻ thực tế về **phỏng vấn, văn hóa văn phòng** và thói quen giúp fresher/ intern hòa nhập nhanh hơn.
+- **Nguyễn Phương Thảo** giới thiệu **vibecode với BMAD**, mở ra hướng tham khảo [docs.bmad-method.org](https://docs.bmad-method.org).
 
 #### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+- Gặp gỡ các bạn FCAJ/FCJ, trao đổi kinh nghiệm thực tập, lộ trình học AWS và hoạt động cộng đồng.
+- Phần hỏi đáp sau mỗi talk giúp đặt thêm câu hỏi về nghề nghiệp và cách dùng AI.
 
 #### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+- **Level up** là hành trình dài hạn: cải thiện nhỏ nhưng đều đặn hiệu quả hơn là làm dồn một lần.
+- Dùng AI cần **tư duy phản biện**; hallucination là rủi ro thật với lệnh, config và giải thích kỹ thuật.
+- **Kỹ năng mềm** quan trọng ngang kỹ thuật khi xin việc và làm việc nhóm.
+- Phương pháp **BMAD** có thể biến vibecode từ prompt ngẫu nhiên thành quy trình lặp lại được.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+
+![Kỷ niệm sự kiện](/images/4-EventParticipated/event-1/memory.jpg)
+
+![Nguyễn Khang – Solution Architect @ CloudKinetics](/images/4-EventParticipated/event-1/speaker-khangnguyen.jpg)
+
+![Nguyễn Thịnh – DevOps Engineer | FCAJ Ambassador](/images/4-EventParticipated/event-1/speaker-thiennguyen.jpg)
+
+![Hoàng Long – FCAJ Ambassador](/images/4-EventParticipated/event-1/speaker-longhoang.jpg)
+
+![Nguyễn Phương Thảo – Cloud Engineer Intern @ VIB | FCJ Ambassador @ AWS](/images/4-EventParticipated/event-1/speaker-thaonguyen.jpg)
+
+> Tổng thể, **Community Day FCAJ HCM** giúp em gắn kết hơn với cộng đồng FCAJ và mang lại nhiều bài học thực tế từ những người đã đồng hành tổ chức sự kiện.
