@@ -1,6 +1,6 @@
 ---
 title: "Week 1 Worklog"
-date: 2026-04-20
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
@@ -28,40 +28,34 @@ pre: " <b> 1.1. </b> "
 
 ### Week 1 Achievements:
 
-* Completed all 5 planned foundational workshops in Week 1.
+* Completed all **5 foundational AWS Study Group workshops** during the internship onboarding week.
 
-* Built practical understanding across key AWS domains:
-  * Account and cost management (Free Tier 2025)
-  * Identity and permissions (IAM users, groups, roles)
-  * Networking and hybrid connectivity (VPC + Site-to-Site VPN)
-  * Compute and application deployment (EC2 on Windows/Linux)
-  * Managed relational database services (Amazon RDS)
+* Understood the **AWS Free Tier 2025** structure, the difference between Free Plan and Paid Plan, and requirements to receive the full **$200 credit**.
 
-* Practiced end-to-end lab execution from environment setup to cleanup, reducing the risk of unnecessary charges.
+* Identified **credit-consuming services** (EC2, NAT Gateway, Load Balancer, etc.) and created a personal **cost-control checklist** for Week 1.
 
-* Strengthened security-first thinking through least privilege, role-based access, and secure network segmentation.
+* Understood the **IAM** model: users, groups, roles, policies, and the **least privilege** principle for AWS access control.
 
-* Improved confidence in reading technical workshop documentation and translating it into hands-on implementation steps.
+* Created **IAM Groups** and **IAM Users**, attached policies, and **verified permissions** in the AWS Management Console.
 
-### Challenges and How I Resolved Them:
+* Created an **IAM Role**, performed **role switching**, and documented the difference between direct user permissions and permissions via roles.
 
-* Challenge: The amount of new AWS concepts in the first week was large and easy to confuse.
-  Resolution: I organized notes by domain (Account, IAM, Network, Compute, Database) and reviewed each workshop summary after finishing the lab.
+* Understood **Amazon VPC** concepts: CIDR blocks, public/private subnets, route tables, and resource isolation in a virtual network.
 
-* Challenge: IAM permissions and role assumptions were initially difficult to visualize.
-  Resolution: I repeated the IAM lab steps and compared permission boundaries between users, groups, and roles.
+* Configured baseline **Security Groups** and **NACLs** to control inbound/outbound traffic at different security layers.
 
-* Challenge: Risk of unexpected charges when creating cloud resources.
-  Resolution: I followed cleanup steps at the end of each lab and cross-checked resources in the AWS console.
+* Followed the **Site-to-Site VPN** setup flow between a simulated on-premises environment and an AWS VPC; **validated connectivity** and completed lab cleanup.
 
-### Lessons Learned:
+* Mastered core **EC2** concepts: instance types, AMIs, key pairs, security groups, and instance connectivity methods.
 
-* Good cloud operations start with cost awareness and security fundamentals.
-* Clear IAM design and least-privilege access are essential from day one.
-* Practicing complete workflows (create, test, clean up) builds reliable habits.
+* Launched **EC2 Windows Server** and **Amazon Linux** instances, connected to each OS, and performed basic operational tasks.
 
-### Plan for Week 2:
+* **Deployed the sample Node.js application** on EC2 and recorded security notes (open ports, SSH/RDP) and cost considerations for continuously running instances.
 
-* Continue hands-on practice with core AWS services in deeper scenarios.
-* Document lab outputs with screenshots and key commands for better evidence.
-* Improve speed and accuracy when troubleshooting deployment and configuration issues.
+* Understood **Amazon RDS** as a managed relational database service, including provisioning, automated backups, and basic high availability.
+
+* Created an **RDS DB instance**, **connected an application** to the database, and **validated backup and restore** per the workshop workflow.
+
+* Practiced **end-to-end lab workflows**: environment setup → deployment → validation → **cleanup** and cost review in the Billing Console after each lab day.
+
+* Built a habit of reading workshop/AWS documentation and translating it into verifiable implementation steps on the console.

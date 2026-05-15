@@ -1,6 +1,6 @@
 ---
 title: "Week 3 Worklog"
-date: 2026-05-04
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
@@ -28,10 +28,34 @@ pre: " <b> 1.3. </b> "
 
 ### Week 3 Achievements:
 
-* Built an AWS Backup plan, configured SNS notifications, tested restore procedures, and cleaned up lab resources.
+* Understood the role of **AWS Backup** in centralizing and automating data protection for resources such as EBS, RDS, DynamoDB, and EFS.
 
-* Set up AWS Storage Gateway (File Gateway), created a file share, mounted it on an on-premises machine, and completed cleanup.
+* Deployed the lab infrastructure, created a **backup plan**, assigned resources to the plan, and configured backup schedules per the workshop policy.
 
-* Deployed an Amazon S3 static website, configured public access settings, and validated access with CloudFront acceleration.
+* Configured **Amazon SNS** to receive notifications when backup or restore jobs complete for centralized status monitoring.
 
-* Applied S3 versioning, object move, and cross-region replication, then reviewed best practices and finished cleanup tasks.
+* Performed **restore testing** from backups and verified that recovered data met expectations.
+
+* Completed **cleanup** of AWS Backup lab resources to avoid unnecessary charges.
+
+* Understood the **hybrid storage** model with **AWS Storage Gateway (File Gateway)** — connecting on-premises file storage to object storage in S3.
+
+* Prepared the lab environment (S3 bucket, EC2 gateway host), activated **Storage Gateway**, and created a **file share**.
+
+* **Mounted the file share** on an on-premises machine, tested file read/write operations, and confirmed data synchronization to S3.
+
+* Fully cleaned up Storage Gateway resources after completing the lab.
+
+* Mastered core **Amazon S3** concepts: buckets, objects, durability (11 nines), and common use cases (websites, backup, data lakes).
+
+* Created an **S3 bucket**, enabled **static website hosting**, configured **Block Public Access**, and set public objects as required by the lab.
+
+* Validated website access via the S3 website endpoint and documented the static content delivery flow from object storage.
+
+* Deployed **Amazon CloudFront** to accelerate static website delivery while restricting direct public access to the bucket.
+
+* Enabled **bucket versioning** to protect objects from accidental overwrites or deletions; practiced **moving objects** between prefixes/buckets.
+
+* Configured **cross-region replication (CRR)** to replicate objects to another Region for disaster recovery and data residency needs.
+
+* Summarized **notes and best practices** for S3 cost, security, and operations; completed cleanup of buckets, distributions, and related resources.

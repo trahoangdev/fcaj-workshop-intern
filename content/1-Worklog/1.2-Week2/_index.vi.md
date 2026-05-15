@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 2"
-date: 2026-04-27
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -29,28 +29,58 @@ pre: " <b> 1.2. </b> "
 
 ### Kết quả đạt được tuần 2:
 
-* Hiểu cách Amazon Route 53 Resolver hỗ trợ hybrid DNS giữa hệ thống DNS on-premises và private DNS zone trên AWS.
+* Hiểu kiến trúc **hybrid DNS** với **Amazon Route 53 Resolver**: inbound endpoint, outbound endpoint và resolver rules.
 
-* Đã cài đặt, cấu hình và thực hành sử dụng AWS CLI để tương tác với các dịch vụ như EC2, S3, SNS, IAM và VPC.
+* Triển khai hạ tầng lab bằng **CloudFormation**, cấu hình **Microsoft AD** và DNS forwarding giữa mô phỏng on-premises và AWS.
 
-* Hiểu cách IAM Identity Center hỗ trợ quản lý users, groups, permission sets và quyền truy cập nhiều AWS account từ một nơi tập trung.
+* Kiểm tra **kết quả phân giải DNS** hai chiều và ghi nhận luồng query giữa môi trường on-premises và private hosted zone trên AWS.
 
-* Nắm được các khái niệm trong AWS Backup như backup plan, restore testing, notification và cleanup để tránh phát sinh chi phí không cần thiết.
+* Cài đặt **AWS CLI**, cấu hình profile (access key, region, output format) và thực hành các lệnh cơ bản.
 
-* Tìm hiểu VM Import/Export và các tình huống sử dụng cho migration, backup và disaster recovery.
+* Dùng CLI để **liệt kê và thao tác** tài nguyên EC2, S3, IAM, VPC và SNS; tạo tài nguyên EC2 bằng dòng lệnh.
 
-* Thực hành triển khai ứng dụng container với Docker, Docker Compose, Docker Hub, Amazon ECR, Amazon RDS và Amazon EC2.
+* Hiểu **IAM Identity Center** (SSO) trong bối cảnh **AWS Organizations**: quản lý nhiều account từ một điểm đăng nhập.
 
-* Hiểu các thành phần chính của Amazon ECS:
-  * ECS cluster
-  * Task definition
-  * ECS service
-  * Application Load Balancer
-  * Target group
-  * Container Insights
+* Tạo **AWS accounts**, **organizational units (OU)**, users, groups và **permission sets**; gán quyền truy cập theo vai trò.
 
-* Hiểu các lựa chọn CI/CD cho triển khai ECS bằng GitLab CI/CD, GitHub Actions và AWS CodeBuild.
+* Kiểm tra đăng nhập **console** và **CLI** qua Identity Center với permission set đã cấu hình.
 
-* Tìm hiểu cách AWS Security Hub tổng hợp security findings và đánh giá compliance theo các chuẩn như AWS Foundational Security Best Practices, CIS AWS Foundations Benchmark và PCI DSS.
+* Hiểu vai trò **AWS Backup** trong bảo vệ tập trung cho EBS, RDS, DynamoDB, EFS; tạo **backup plan** và gán resource.
 
-* Thực hành các mô hình kết nối mạng với VPC Peering và AWS Transit Gateway, bao gồm route tables, attachments và các bước cleanup.
+* Cấu hình **thông báo backup** (SNS), thực hiện **restore testing** và **cleanup** tài nguyên lab Backup.
+
+* Nắm **VM Import/Export**: export VM từ on-premises, upload image lên **S3**, import thành **AMI** và khởi chạy **EC2**.
+
+* Chuẩn bị **VMware Workstation**, hoàn thành chuỗi export → upload → import theo workshop migration.
+
+* Chạy ứng dụng **local** với dependencies; hiểu Dockerfile và quy trình đóng gói image.
+
+* Cấu hình **VPC**, security group và **IAM role** cho EC2 truy cập **Amazon ECR**.
+
+* Khởi tạo **Amazon RDS**, gắn database vào luồng ứng dụng container trên EC2.
+
+* **Deploy** ứng dụng bằng Docker image và **Docker Compose**; **push image** lên ECR hoặc Docker Hub.
+
+* Tạo **ECS cluster** với **AWS Fargate** (serverless container, không quản lý EC2 host).
+
+* Định nghĩa **task definition** cho backend và frontend; cấu hình container port, image và biến môi trường.
+
+* Thiết lập **Application Load Balancer**, **target group** và routing traffic tới ECS service.
+
+* Triển khai backend service với **blue/green deployment** và frontend service với **rolling deployment**; kiểm tra truy cập ứng dụng và **Container Insights**.
+
+* Cấu hình **GitLab pipeline** và **GitLab Runner** cho luồng build/deploy tự động.
+
+* Thiết lập **GitHub Actions workflow** deploy lên ECS; tạo **CodeBuild project** cho frontend và backend.
+
+* Theo dõi **kết quả deployment** và **application logs** sau mỗi lần chạy pipeline.
+
+* Bật **AWS Security Hub**, xem **security standards**, security score và danh sách **findings**.
+
+* Đánh giá findings theo các chuẩn như **AWS Foundational Security Best Practices**, **CIS** và **PCI DSS**; cleanup sau lab.
+
+* Tạo **VPC Peering connection**, cập nhật **route tables** và cấu hình **cross-peer DNS resolution**.
+
+* Triển khai **AWS Transit Gateway**: attachments, route tables, thêm route vào VPC và **test kết nối** đa VPC.
+
+* Hoàn tất **cleanup** tài nguyên networking, Security Hub và CI/CD để tránh phát sinh chi phí.

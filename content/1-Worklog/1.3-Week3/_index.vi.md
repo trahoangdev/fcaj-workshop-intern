@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 3"
-date: 2026-05-04
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.3. </b> "
@@ -28,10 +28,34 @@ pre: " <b> 1.3. </b> "
 
 ### Kết quả đạt được tuần 3:
 
-* Hoàn thành AWS Backup plan, cấu hình SNS notifications, kiểm thử restore và dọn dẹp tài nguyên lab.
+* Hiểu vai trò của **AWS Backup** trong việc tập trung hóa và tự động hóa bảo vệ dữ liệu cho các tài nguyên như EBS, RDS, DynamoDB và EFS.
 
-* Triển khai AWS Storage Gateway (File Gateway), tạo file share, mount lên máy on-premises và cleanup.
+* Triển khai hạ tầng lab, tạo **backup plan**, gán resource vào plan và thiết lập lịch backup theo chính sách workshop.
 
-* Triển khai static website trên Amazon S3, cấu hình public access, và kiểm tra truy cập qua CloudFront.
+* Cấu hình **Amazon SNS** để nhận thông báo khi job backup hoặc restore hoàn tất, giúp theo dõi trạng thái tập trung.
 
-* Thiết lập S3 versioning, move object và replication đa region, đồng thời tổng hợp notes/best practices và hoàn tất cleanup.
+* Thực hiện **restore testing** từ bản backup và xác minh dữ liệu phục hồi đúng kỳ vọng.
+
+* Hoàn tất **cleanup** tài nguyên lab AWS Backup để tránh phát sinh chi phí.
+
+* Hiểu mô hình **hybrid storage** với **AWS Storage Gateway (File Gateway)** — kết nối lưu trữ file on-premises với object storage trên S3.
+
+* Chuẩn bị môi trường lab (S3 bucket, EC2 gateway host), khởi tạo **Storage Gateway** và tạo **file share**.
+
+* **Mount file share** lên máy on-premises, kiểm tra thao tác đọc/ghi file và xác nhận dữ liệu được đồng bộ về S3.
+
+* Dọn dẹp đầy đủ tài nguyên Storage Gateway sau khi hoàn thành lab.
+
+* Nắm các khái niệm cốt lõi của **Amazon S3**: bucket, object, durability (11 nines) và các use case phổ biến (website, backup, data lake).
+
+* Tạo **S3 bucket**, bật **static website hosting**, cấu hình **Block Public Access** và public object theo yêu cầu lab.
+
+* Kiểm tra truy cập website qua endpoint S3 và ghi nhận luồng phục vụ nội dung tĩnh từ object storage.
+
+* Triển khai **Amazon CloudFront** để tăng tốc phân phối static website, đồng thời hạn chế truy cập public trực tiếp vào bucket.
+
+* Bật **bucket versioning** để bảo vệ object khỏi ghi đè hoặc xóa nhầm; thực hành **move object** giữa prefix/bucket.
+
+* Cấu hình **cross-region replication (CRR)** để sao chép object sang region khác, phục vụ DR và tuân thủ dữ liệu.
+
+* Tổng hợp **notes & best practices** về chi phí, bảo mật và vận hành S3; hoàn tất cleanup bucket, distribution và tài nguyên liên quan.

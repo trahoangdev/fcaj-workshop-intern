@@ -1,6 +1,6 @@
 ---
 title: "Week 2 Worklog"
-date: 2026-04-27
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.2. </b> "
@@ -29,28 +29,58 @@ pre: " <b> 1.2. </b> "
 
 ### Week 2 Achievements:
 
-* Understood how Amazon Route 53 Resolver supports hybrid DNS between on-premises DNS systems and AWS-hosted private DNS zones.
+* Understood **hybrid DNS** architecture with **Amazon Route 53 Resolver**: inbound endpoints, outbound endpoints, and resolver rules.
 
-* Installed, configured, and practiced using AWS CLI to interact with AWS services such as EC2, S3, SNS, IAM, and VPC.
+* Deployed lab infrastructure with **CloudFormation**, configured **Microsoft AD**, and set up DNS forwarding between simulated on-premises and AWS.
 
-* Learned how IAM Identity Center helps manage users, groups, permission sets, and access to multiple AWS accounts from a centralized place.
+* Validated **DNS resolution** in both directions and documented query flows between on-premises DNS and AWS private hosted zones.
 
-* Understood AWS Backup concepts, including backup plans, restore testing, notifications, and cleanup to avoid unnecessary costs.
+* Installed the **AWS CLI**, configured profiles (access keys, region, output format), and practiced foundational commands.
 
-* Studied VM Import/Export and its use cases for migration, backup, and disaster recovery scenarios.
+* Used the CLI to **list and manage** EC2, S3, IAM, VPC, and SNS resources; created EC2 resources from the command line.
 
-* Practiced container application deployment with Docker, Docker Compose, Docker Hub, Amazon ECR, Amazon RDS, and Amazon EC2.
+* Understood **IAM Identity Center** (SSO) in the context of **AWS Organizations** for centralized multi-account access.
 
-* Learned the main components of Amazon ECS:
-  * ECS cluster
-  * Task definition
-  * ECS service
-  * Application Load Balancer
-  * Target group
-  * Container Insights
+* Created **AWS accounts**, **organizational units (OUs)**, users, groups, and **permission sets**; assigned role-based access.
 
-* Understood CI/CD options for ECS deployments using GitLab CI/CD, GitHub Actions, and AWS CodeBuild.
+* Verified **console** and **CLI** sign-in through Identity Center with configured permission sets.
 
-* Learned how AWS Security Hub aggregates security findings and evaluates compliance against standards such as AWS Foundational Security Best Practices, CIS AWS Foundations Benchmark, and PCI DSS.
+* Understood **AWS Backup** for centralized protection of EBS, RDS, DynamoDB, and EFS; created a **backup plan** and assigned resources.
 
-* Practiced network connectivity patterns with VPC Peering and AWS Transit Gateway, including route tables, attachments, and cleanup steps.
+* Configured **backup notifications** (SNS), performed **restore testing**, and completed Backup lab **cleanup**.
+
+* Mastered **VM Import/Export**: exported a VM from on-premises, uploaded the image to **S3**, imported an **AMI**, and launched **EC2**.
+
+* Prepared **VMware Workstation** and completed the export → upload → import migration workflow from the workshop.
+
+* Ran the application **locally** with dependencies; understood Dockerfile basics and image packaging workflows.
+
+* Configured **VPC**, security groups, and an **IAM role** for EC2 access to **Amazon ECR**.
+
+* Provisioned **Amazon RDS** and integrated the database into the container application flow on EC2.
+
+* **Deployed** the application with Docker images and **Docker Compose**; **pushed images** to ECR or Docker Hub.
+
+* Created an **ECS cluster** with **AWS Fargate** (serverless containers without managing EC2 hosts).
+
+* Defined **task definitions** for backend and frontend, including container ports, images, and environment variables.
+
+* Set up an **Application Load Balancer**, **target groups**, and traffic routing to ECS services.
+
+* Deployed a backend service with **blue/green deployment** and a frontend service with **rolling deployment**; verified application access and **Container Insights**.
+
+* Configured a **GitLab pipeline** and **GitLab Runner** for automated build and deploy workflows.
+
+* Set up a **GitHub Actions workflow** for ECS deployment and created **CodeBuild projects** for frontend and backend.
+
+* Monitored **deployment results** and **application logs** after each pipeline run.
+
+* Enabled **AWS Security Hub**, reviewed **security standards**, security scores, and **findings**.
+
+* Evaluated findings against **AWS Foundational Security Best Practices**, **CIS**, and **PCI DSS**; completed Security Hub lab cleanup.
+
+* Created a **VPC Peering connection**, updated **route tables**, and configured **cross-peer DNS resolution**.
+
+* Deployed **AWS Transit Gateway** with attachments and route tables, added routes to VPCs, and **tested multi-VPC connectivity**.
+
+* Completed **cleanup** of networking, Security Hub, and CI/CD resources to avoid unnecessary charges.

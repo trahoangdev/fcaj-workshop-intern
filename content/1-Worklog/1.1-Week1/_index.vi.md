@@ -1,6 +1,6 @@
 ---
 title: "Worklog Tuần 1"
-date: 2026-04-20
+date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
@@ -28,42 +28,35 @@ pre: " <b> 1.1. </b> "
 
 ### Kết quả đạt được tuần 1:
 
-* Hoàn thành đầy đủ 5 workshop nền tảng đã đặt ra trong tuần 1.
+* Hoàn thành đầy đủ **5 workshop nền tảng** AWS Study Group trong tuần khởi động thực tập.
 
-* Củng cố kiến thức và thực hành trên các mảng AWS quan trọng:
-  * Quản lý tài khoản và chi phí (Free Tier 2025)
-  * Quản trị định danh và phân quyền (IAM user, group, role)
-  * Mạng và kết nối hybrid (VPC + Site-to-Site VPN)
-  * Tài nguyên tính toán và triển khai ứng dụng (EC2 Windows/Linux)
-  * Dịch vụ cơ sở dữ liệu quan hệ managed (Amazon RDS)
+* Hiểu cấu trúc **AWS Free Tier 2025**, phân biệt Free Plan và Paid Plan, và các điều kiện để nhận đủ **$200 credit**.
 
-* Thực hành quy trình lab theo hướng end-to-end từ chuẩn bị môi trường, triển khai, kiểm tra đến cleanup.
+* Nắm các dịch vụ dễ làm **hao hụt credit** (EC2, NAT Gateway, Load Balancer, v.v.) và lập **checklist quản lý chi phí** cá nhân cho tuần đầu.
 
-* Nâng cao tư duy bảo mật với least privilege, role-based access và network segmentation.
+* Hiểu mô hình **IAM**: user, group, role, policy và nguyên tắc **least privilege** trong phân quyền truy cập AWS.
 
-* Cải thiện khả năng đọc tài liệu kỹ thuật và chuyển hóa thành các bước triển khai thực tế.
+* Đã tạo **IAM Group**, **IAM User**, gán policy và **kiểm tra quyền** truy cập trên console.
 
-### Khó khăn gặp phải và cách xử lý:
+* Tạo **IAM Role**, thực hiện **switch role** và ghi nhận khác biệt giữa quyền gán trực tiếp cho user và quyền thông qua role.
 
-* Khó khăn: Lượng kiến thức AWS mới trong tuần đầu khá lớn, dễ nhầm lẫn giữa các dịch vụ.
-  Cách xử lý: Ghi chú theo từng nhóm (Account, IAM, Network, Compute, Database) và tổng hợp lại sau mỗi workshop.
+* Hiểu khái niệm **Amazon VPC**: CIDR, subnet public/private, route table và cách cô lập tài nguyên trong mạng ảo.
 
-* Khó khăn: Phân quyền IAM và cơ chế assume role ban đầu khó hình dung.
-  Cách xử lý: Làm lại bài IAM nhiều lần, so sánh khác biệt giữa user, group và role để hiểu luồng cấp quyền.
+* Cấu hình **Security Group** và **NACL** ở mức nền tảng để kiểm soát traffic vào/ra theo từng lớp bảo mật.
 
-* Khó khăn: Nguy cơ phát sinh chi phí ngoài ý muốn khi thực hành cloud.
-  Cách xử lý: Luôn chạy bước cleanup sau mỗi lab và kiểm tra lại tài nguyên còn tồn tại trên AWS Console.
+* Thực hiện luồng thiết lập **Site-to-Site VPN** giữa môi trường mô phỏng on-premises và VPC trên AWS; **kiểm tra kết nối** và cleanup theo hướng dẫn lab.
 
-### Bài học rút ra:
+* Nắm các khái niệm **EC2**: instance type, AMI, key pair, security group và cách kết nối instance.
 
-* Làm cloud hiệu quả phải đi từ nền tảng chi phí và bảo mật.
-* Thiết kế IAM và nguyên tắc least privilege cần áp dụng ngay từ đầu.
-* Thực hành trọn vòng đời (tạo, kiểm thử, dọn dẹp) giúp hình thành thói quen vận hành tốt.
+* Khởi tạo **EC2 Windows Server** và **Amazon Linux**, thực hiện kết nối và các thao tác vận hành cơ bản trên từng loại OS.
 
-### Kế hoạch tuần 2:
+* **Deploy ứng dụng Node.js mẫu** trên EC2, ghi nhận các lưu ý về bảo mật (mở port, SSH/RDP) và chi phí khi instance chạy liên tục.
 
-* Tiếp tục thực hành các dịch vụ AWS cốt lõi ở mức chuyên sâu hơn.
-* Bổ sung ảnh minh chứng và lệnh quan trọng trong từng bài để báo cáo rõ ràng hơn.
-* Tăng tốc xử lý lỗi khi triển khai và cấu hình dịch vụ.
+* Hiểu **Amazon RDS** là dịch vụ database quan hệ được quản lý, bao gồm provisioning, backup tự động và high availability cơ bản.
 
+* Tạo **RDS DB instance**, **kết nối ứng dụng** với database và **kiểm thử backup/restore** theo quy trình workshop.
+
+* Thực hành quy trình lab **end-to-end**: chuẩn bị môi trường → triển khai → kiểm tra → **cleanup** và rà soát chi phí trên Billing Console sau mỗi ngày lab.
+
+* Hình thành thói quen đọc tài liệu workshop/AWS Docs và chuyển thành các bước triển khai có thể kiểm chứng trên console.
 
