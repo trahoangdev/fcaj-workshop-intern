@@ -1,5 +1,5 @@
 ---
-title: "Community Day at FCAJ HCM"
+title: "Community Day FCAJ HCM"
 date: 2024-01-01
 weight: 1
 chapter: false
@@ -10,7 +10,7 @@ pre: " <b> 4.1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}-->
 
-# Bài thu hoạch “Community Day at FCAJ HCM”
+# Bài thu hoạch “Community Day FCAJ HCM”
 
 ### Mục đích của sự kiện
 
@@ -23,7 +23,7 @@ pre: " <b> 4.1. </b> "
 
 - **Nguyễn Khang** – Solution Architect at CloudKinetics
 - **Nguyễn Thịnh** – DevOps Engineer | FCAJ Ambassador at AWS
-- **Hoàng Long** – FCAJ Ambassador at AWS
+- **Huỳnh Hoàng Long** – FCAJ Ambassador at AWS
 - **Nguyễn Phương Thảo** – Cloud Engineer Intern at VIB | FCJ Ambassador at AWS
 
 ### Nội dung nổi bật
