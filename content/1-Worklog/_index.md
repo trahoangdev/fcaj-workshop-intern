@@ -22,7 +22,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 4:** [Practicing DynamoDB, VM migration, FSx, Storage Gateway, and advanced Amazon S3](1.4-week4/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 5:** [Practicing tags, IAM least privilege, KMS encryption, Security Hub, Lambda cost optimization, and Grafana](1.5-week5/)
 
 **Week 6:** [Doing task E...](1.6-week6/)
 

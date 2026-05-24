@@ -1,125 +1,147 @@
 ---
-title: "Event 2"
+title: "AWS First Cloud AI Journey - Community Day"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
+<!--{{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+{{% /notice %}}-->
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “AWS First Cloud AI Journey – Community Day”
 
-### Mục Đích Của Sự Kiện
+### Mục đích của sự kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Kết nối cộng đồng **FCAJ (First Cloud AI Journey)** tại TP. Hồ Chí Minh
+- Chia sẻ kinh nghiệm thực tế khi làm việc với **AI / GenAI** trong môi trường production
+- Cập nhật các dịch vụ **AWS** hữu ích cho AI workloads (CloudFront, bộ Amazon Quick)
+- Truyền cảm hứng nghề nghiệp qua các câu chuyện hackathon và case study doanh nghiệp
 
-### Danh Sách Diễn Giả
+### Danh sách diễn giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Tinh Truong** – Platform Engineer tại GoTymeX
+- **Thinh Nguyen** – DevOps Engineer | FCAJ Ambassador
+- **Anh Pham** – Cloud Consultant tại G-AsiaPacific Vietnam
+- **Uyen Le** – GenAI Engineer tại VIB
+- **Thao Nguyen** – GenAI Engineer tại VIB
+- **Mai Nguyen** – GenAI Engineer tại VIB
+- **Duc Dao** – Solutions Architect tại Cloud Kinetics
+- **Vy Lam** – Senior Business Systems Analyst tại VPBank
 
-### Nội Dung Nổi Bật
+### Lịch trình sự kiện
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+| Thời gian | Diễn giả | Chủ đề |
+|---|---|---|
+| 09:00 – 09:30 | **Tinh Truong** | Context Is Everything: Making AI Actually Work for You |
+| 09:30 – 09:45 | **Thinh Nguyen** | Friendly AI Assistant with Amazon Quick |
+| 09:45 – 10:25 | **Anh Pham** | From Edge To Origin: CloudFront as Your Foundation |
+| 10:25 – 10:55 | **Uyen Le, Thao Nguyen, Mai Nguyen** | 36 hrs with LotusHacks – Building UTMorpho from Idea to Reality |
+| 10:55 – 11:00 | — | Giải lao |
+| 11:00 – 11:30 | **Duc Dao** | Non-Determinism of "Deterministic" LLM Settings |
+| 11:30 – 12:00 | **Vy Lam** | Enterprise-Grade Multi-Agent System: The Case of Startup Credit Scoring |
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+### Nội dung nổi bật
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Tinh Truong – Context Is Everything: Làm AI thực sự hữu ích
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+- Vì sao AI thất bại khi thiếu context, và “context” thực sự là gì
+- Từ prompt tới memory: AI đang tiến hóa thế nào với khái niệm **Second AI Brain**
+- Context tốt hơn dẫn đến kết quả tốt hơn — mindset và tips thực tế
+- Định hướng nghề nghiệp và cách sinh viên có thể bắt đầu xây dựng cùng AI
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### Thinh Nguyen – Friendly AI Assistant với Amazon Quick
 
-#### Domain-Driven Design (DDD)
+- **Quick Chat Agent**: trợ lý AI để khám phá và phân tích dữ liệu
+- **Quick Flows**: xây dựng workflow thông minh bằng ngôn ngữ tự nhiên, không cần code
+- **Quick Spaces**: không gian cộng tác biến insight cá nhân thành tri thức team
+- **Quick Sight**: dựng dashboard và report từ dữ liệu thô bằng natural language
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### Anh Pham – From Edge To Origin: CloudFront làm nền tảng
 
-#### Event-Driven Architecture
+- Amazon CloudFront cho mọi loại workload
+- Tối ưu chi phí với CloudFront
+- Khả năng bảo mật ngay tại edge
+- Tăng độ tin cậy và hiệu năng với CloudFront
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+#### Uyen Le, Thao Nguyen, Mai Nguyen – 36 giờ tại LotusHacks: Xây dựng UTMorpho
 
-#### Compute Evolution
+- Vì sao team tham gia **LotusHacks**
+- Hành trình brainstorm ý tưởng từ con số 0
+- Định hình vấn đề và xây dựng sản phẩm **UTMorpho**
+- Sprint 36 giờ dưới áp lực thời gian
+- Những thử thách, thất bại và bước ngoặt quan trọng
+- Demo sản phẩm và các bài học rút ra
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### Duc Dao – Non-Determinism của LLM khi cấu hình "Deterministic"
 
-#### Amazon Q Developer
+- Cách LLM chọn token tiếp theo
+- Giả định phổ biến: **Temperature = 0** đảm bảo kết quả tái lập
+- Thực tế: các tối ưu inference khiến giả định này bị phá vỡ
+- Tác động trong production và các chiến lược giảm thiểu
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+#### Vy Lam – Multi-Agent System cấp doanh nghiệp: Chấm điểm tín dụng startup
 
-### Những Gì Học Được
+- Sự lệch pha giữa hệ thống ngân hàng truyền thống và dữ liệu startup
+- **Single Agent**: khi nào nên và khi nào không nên dùng
+- Mô hình **Multi-Agent** cho các bài toán phức tạp
+- Blueprint của một Virtual Credit Committee
+- Guardrails, compliance, ROI vận hành và lộ trình triển khai
 
-#### Tư Duy Thiết Kế
+### Những gì học được
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+#### Tư duy khi làm việc với AI
 
-#### Kiến Trúc Kỹ Thuật
+- **Context engineering** quan trọng hơn việc viết prompt khéo léo
+- Coi AI như một đồng đội cần **memory, tools và grounding**, không phải search engine
+- **Determinism chỉ là ảo giác** — luôn thiết kế để chấp nhận biến động, kể cả khi `temperature=0`
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+#### Kiến trúc & AWS
 
-#### Chiến Lược Hiện Đại Hóa
+- **CloudFront** không chỉ là CDN, mà có thể là nền tảng cho cả bảo mật và hiệu năng
+- Bộ **Amazon Quick** giúp người không phải engineer cũng có thể xây dựng workflow AI
+- Với domain phức tạp, **multi-agent systems** kèm guardrails sẽ vượt trội so với single agent
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+#### Nghề nghiệp & cộng đồng
 
-### Ứng Dụng Vào Công Việc
+- Hackathon như **LotusHacks** là cách nhanh để ship sản phẩm thật và học dưới áp lực
+- AI cấp doanh nghiệp cần **compliance, ROI tracking và roadmap rõ ràng**, không chỉ demo
+- Tham gia cộng đồng **FCAJ** giúp học hỏi nhanh từ những người đang làm thật trong production
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+### Ứng dụng vào công việc
+
+- Thêm **context layer** (memory, retrieval, tools) cho các trợ lý AI nội bộ thay vì chỉ dùng prompt thô
+- Thử nghiệm **Amazon Quick Flows / Quick Sight** cho các use case báo cáo nội bộ
+- Rà soát các tính năng đang dùng LLM để phát hiện **rủi ro non-determinism** và thêm guardrails / eval
+- Đánh giá dùng **CloudFront** cho static asset và bảo mật cơ bản tại edge cho project mới
+- Phác thảo thiết kế **multi-agent** cho những workflow đang “gồng” trong một prompt duy nhất
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia **AWS First Cloud AI Journey – Community Day** ngày 23/05/2026 là một buổi sáng đầy cảm hứng với nội dung kỹ thuật sâu và những câu chuyện rất thực tế. Một số khoảnh khắc nổi bật:
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Học từ dàn diễn giả đa dạng
+- Diễn giả đến từ nhiều mảng khác nhau — ngân hàng (**VPBank, VIB**), platform engineering (**GoTymeX**), AWS partner (**G-AsiaPacific, Cloud Kinetics**) và chính cộng đồng **FCAJ**.
+- Mỗi talk chạm vào một tầng khác nhau của AI stack: prompting, tooling, infrastructure, kiến trúc enterprise.
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+#### Bài học kỹ thuật rõ ràng
+- **Tinh Truong** thay đổi cách em nhìn về prompting — context trước, prompt sau.
+- **Duc Dao** phá vỡ niềm tin rằng `temperature=0` là đủ để output tái lập được.
+- **Vy Lam** cho thấy multi-agent system đã được dùng trong domain tài chính nghiêm túc, không chỉ là demo.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+#### Tiếp cận AWS thực tế
+- **Thinh Nguyen** demo bộ **Amazon Quick** — hạ thấp rào cản khi xây tool AI nội bộ.
+- **Anh Pham** đào sâu **CloudFront** ngoài góc CDN — bảo mật, chi phí, độ tin cậy mà em từng dùng chưa hết.
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+#### Cảm hứng từ những người trẻ
+- Câu chuyện **UTMorpho / LotusHacks** từ **Uyen Le, Thao Nguyen, Mai Nguyen** là minh chứng rằng 36 giờ vẫn đủ để ship một sản phẩm có ý nghĩa nếu có team đúng.
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
+#### Networking
+- Gặp gỡ các bạn FCAJ/FCJ tại tầng 26 Bitexco, trao đổi về thực tập, lộ trình học AWS và các project AI hiện tại.
 
 #### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+
+![Speakers of FCAJ Community Day](/images/4-EventParticipated/event-2/speakers.jpg)
+
+> Tổng thể, sự kiện củng cố một niềm tin: **xây dựng sản phẩm AI hữu ích chủ yếu là chuyện context, guardrails và năng lực thực thi của team** — và cộng đồng FCAJ tại HCMC là nơi rất tốt để cùng học điều đó.
