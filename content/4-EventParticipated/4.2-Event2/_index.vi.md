@@ -35,8 +35,8 @@ pre: " <b> 4.2. </b> "
 | Thời gian | Diễn giả | Chủ đề |
 |---|---|---|
 | 09:00 – 09:30 | **Tinh Truong** | Context Is Everything: Making AI Actually Work for You |
-| 09:30 – 09:45 | **Thinh Nguyen** | Friendly AI Assistant with Amazon Quick |
-| 09:45 – 10:25 | **Anh Pham** | From Edge To Origin: CloudFront as Your Foundation |
+| 09:30 – 09:45 | **Anh Pham** | Friendly AI Assistant with Amazon Quick |
+| 09:45 – 10:25 | **Thinh Nguyen** | From Edge To Origin: CloudFront as Your Foundation |
 | 10:25 – 10:55 | **Uyen Le, Thao Nguyen, Mai Nguyen** | 36 hrs with LotusHacks – Building UTMorpho from Idea to Reality |
 | 10:55 – 11:00 | — | Giải lao |
 | 11:00 – 11:30 | **Duc Dao** | Non-Determinism of "Deterministic" LLM Settings |
@@ -51,14 +51,14 @@ pre: " <b> 4.2. </b> "
 - Context tốt hơn dẫn đến kết quả tốt hơn — mindset và tips thực tế
 - Định hướng nghề nghiệp và cách sinh viên có thể bắt đầu xây dựng cùng AI
 
-#### Thinh Nguyen – Friendly AI Assistant với Amazon Quick
+#### Anh Pham – Friendly AI Assistant với Amazon Quick
 
 - **Quick Chat Agent**: trợ lý AI để khám phá và phân tích dữ liệu
 - **Quick Flows**: xây dựng workflow thông minh bằng ngôn ngữ tự nhiên, không cần code
 - **Quick Spaces**: không gian cộng tác biến insight cá nhân thành tri thức team
 - **Quick Sight**: dựng dashboard và report từ dữ liệu thô bằng natural language
 
-#### Anh Pham – From Edge To Origin: CloudFront làm nền tảng
+#### Thinh Nguyen – From Edge To Origin: CloudFront làm nền tảng
 
 - Amazon CloudFront cho mọi loại workload
 - Tối ưu chi phí với CloudFront
@@ -131,8 +131,8 @@ Tham gia **AWS First Cloud AI Journey – Community Day** ngày 23/05/2026 là m
 - **Vy Lam** cho thấy multi-agent system đã được dùng trong domain tài chính nghiêm túc, không chỉ là demo.
 
 #### Tiếp cận AWS thực tế
-- **Thinh Nguyen** demo bộ **Amazon Quick** — hạ thấp rào cản khi xây tool AI nội bộ.
-- **Anh Pham** đào sâu **CloudFront** ngoài góc CDN — bảo mật, chi phí, độ tin cậy mà em từng dùng chưa hết.
+- **Anh Pham** demo bộ **Amazon Quick** — hạ thấp rào cản khi xây tool AI nội bộ.
+- **Thinh Nguyen** đào sâu **CloudFront** ngoài góc CDN — bảo mật, chi phí, độ tin cậy mà em từng dùng chưa hết.
 
 #### Cảm hứng từ những người trẻ
 - Câu chuyện **UTMorpho / LotusHacks** từ **Uyen Le, Thao Nguyen, Mai Nguyen** là minh chứng rằng 36 giờ vẫn đủ để ship một sản phẩm có ý nghĩa nếu có team đúng.
@@ -142,6 +142,20 @@ Tham gia **AWS First Cloud AI Journey – Community Day** ngày 23/05/2026 là m
 
 #### Một số hình ảnh khi tham gia sự kiện
 
-![Speakers of FCAJ Community Day](/images/4-EventParticipated/event-2/speakers.jpg)
+![FCAJ Community Day](/images/4-EventParticipated/event-2/fcaj-community.jpg)
+
+![Nguyen Gia Hung](/images/4-EventParticipated/event-2/NguyenGiaHung.jpg)
+
+![Tinh Truong – Platform Engineer @ GoTymeX](/images/4-EventParticipated/event-2/TinhTruong.jpg)
+
+![Thinh Nguyen – DevOps Engineer | FCAJ Ambassador](/images/4-EventParticipated/event-2/ThinhNguyen.jpg)
+
+![Anh Pham – Cloud Consultant @ G-AsiaPacific Vietnam](/images/4-EventParticipated/event-2/AnhPham.jpg)
+
+![Uyen Le, Thao Nguyen, Mai Nguyen – GenAI Engineers @ VIB](/images/4-EventParticipated/event-2/UyenLe-ThaoNguyen-MaiNguyen.jpg)
+
+![Duc Dao – Solutions Architect @ Cloud Kinetics](/images/4-EventParticipated/event-2/DucDao.jpg)
+
+![Vy Lam – Senior Business Systems Analyst @ VPBank](/images/4-EventParticipated/event-2/VyLam.jpg)
 
 > Tổng thể, sự kiện củng cố một niềm tin: **xây dựng sản phẩm AI hữu ích chủ yếu là chuyện context, guardrails và năng lực thực thi của team** — và cộng đồng FCAJ tại HCMC là nơi rất tốt để cùng học điều đó.

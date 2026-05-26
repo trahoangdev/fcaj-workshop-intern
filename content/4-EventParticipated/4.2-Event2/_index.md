@@ -35,8 +35,8 @@ pre: " <b> 4.2. </b> "
 | Time | Speaker | Session |
 |---|---|---|
 | 09:00 – 09:30 | **Tinh Truong** | Context Is Everything: Making AI Actually Work for You |
-| 09:30 – 09:45 | **Thinh Nguyen** | Friendly AI Assistant with Amazon Quick |
-| 09:45 – 10:25 | **Anh Pham** | From Edge To Origin: CloudFront as Your Foundation |
+| 09:30 – 09:45 | **Anh Pham** | Friendly AI Assistant with Amazon Quick |
+| 09:45 – 10:25 | **Thinh Nguyen** | From Edge To Origin: CloudFront as Your Foundation |
 | 10:25 – 10:55 | **Uyen Le, Thao Nguyen, Mai Nguyen** | 36 hrs with LotusHacks – Building UTMorpho from Idea to Reality |
 | 10:55 – 11:00 | — | Coffee Break |
 | 11:00 – 11:30 | **Duc Dao** | Non-Determinism of "Deterministic" LLM Settings |
@@ -51,14 +51,14 @@ pre: " <b> 4.2. </b> "
 - How better context produces better results — practical mindset and tips
 - Career insights and how students can start building with AI
 
-#### Thinh Nguyen – Friendly AI Assistant with Amazon Quick
+#### Anh Pham – Friendly AI Assistant with Amazon Quick
 
 - **Quick Chat Agent**: AI assistants for exploring and analyzing data
 - **Quick Flows**: build intelligent workflows with natural language, no coding required
 - **Quick Spaces**: collaborative spaces that turn individual insights into team knowledge
 - **Quick Sight**: build dashboards and reports from raw data using natural language
 
-#### Anh Pham – From Edge To Origin: CloudFront as Your Foundation
+#### Thinh Nguyen – From Edge To Origin: CloudFront as Your Foundation
 
 - Amazon CloudFront for every workload type
 - Cost optimization techniques with CloudFront
@@ -131,8 +131,8 @@ Attending **AWS First Cloud AI Journey – Community Day** on May 23, 2026 was a
 - **Vy Lam** showed how multi-agent systems are already being used in serious financial domains, not just demos.
 
 #### Hands-on AWS exposure
-- **Thinh Nguyen** demoed the **Amazon Quick** suite, which lowers the bar for building internal AI tools.
-- **Anh Pham** went deep on **CloudFront** beyond CDN — security, cost, and reliability angles I had underused.
+- **Anh Pham** demoed the **Amazon Quick** suite, which lowers the bar for building internal AI tools.
+- **Thinh Nguyen** went deep on **CloudFront** beyond CDN — security, cost, and reliability angles I had underused.
 
 #### Inspiration from peers
 - The **UTMorpho / LotusHacks** story from **Uyen Le, Thao Nguyen, Mai Nguyen** was a strong reminder that 36 hours is enough to ship something meaningful with the right team.
@@ -142,6 +142,20 @@ Attending **AWS First Cloud AI Journey – Community Day** on May 23, 2026 was a
 
 #### Some event photos
 
-![Speakers of FCAJ Community Day](/images/4-EventParticipated/event-2/speakers.jpg)
+![FCAJ Community Day](/images/4-EventParticipated/event-2/fcaj-community.jpg)
+
+![Nguyen Gia Hung](/images/4-EventParticipated/event-2/NguyenGiaHung.jpg)
+
+![Tinh Truong – Platform Engineer @ GoTymeX](/images/4-EventParticipated/event-2/TinhTruong.jpg)
+
+![Thinh Nguyen – DevOps Engineer | FCAJ Ambassador](/images/4-EventParticipated/event-2/ThinhNguyen.jpg)
+
+![Anh Pham – Cloud Consultant @ G-AsiaPacific Vietnam](/images/4-EventParticipated/event-2/AnhPham.jpg)
+
+![Uyen Le, Thao Nguyen, Mai Nguyen – GenAI Engineers @ VIB](/images/4-EventParticipated/event-2/UyenLe-ThaoNguyen-MaiNguyen.jpg)
+
+![Duc Dao – Solutions Architect @ Cloud Kinetics](/images/4-EventParticipated/event-2/DucDao.jpg)
+
+![Vy Lam – Senior Business Systems Analyst @ VPBank](/images/4-EventParticipated/event-2/VyLam.jpg)
 
 > Overall, the event reinforced that **building useful AI products is mostly about context, guardrails, and team execution** — and that the FCAJ community in HCMC is a great place to learn this together.
