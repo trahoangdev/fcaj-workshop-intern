@@ -5,122 +5,164 @@ weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Cyber Resilience trên AWS: Cách tiếp cận tham khảo để phục hồi sau ransomware và sự cố phá hủy
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+## Nguồn tham khảo
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+- AWS Architecture Blog: [Cyber resilience on AWS: A reference approach for recovery from ransomware and destructive events](https://aws.amazon.com/vi/blogs/architecture/cyber-resilience-on-aws-a-reference-approach-for-recovery-from-ransomware-and-destructive-events/)
+- Tác giả: Ashish Panwar, Kanniah Vagathupatti Jaikumar, Rakesh Singh
+- Ngày phát hành: 20/05/2026
 
----
+## Tổng quan
 
-## Hướng dẫn kiến trúc
+Khi nhắc đến bảo mật, chúng ta thường nghĩ đến việc ngăn chặn tấn công hoặc phát hiện mối đe dọa càng sớm càng tốt. Tuy nhiên, bài viết của AWS nhấn mạnh thêm một khía cạnh rất quan trọng: **cyber resilience**, tức là khả năng khôi phục workload về một trạng thái đáng tin cậy sau khi môi trường đã bị ảnh hưởng bởi ransomware, data extortion hoặc các sự cố phá hủy.
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+Điểm mình thấy quan trọng nhất là: trong một sự cố nghiêm trọng, không thể mặc định production, credential, backup hoặc hạ tầng recovery vẫn còn an toàn. Vì vậy, chiến lược phục hồi không chỉ là "có backup", mà còn phải đảm bảo backup không bị xóa, môi trường phục hồi được cô lập, và dữ liệu được kiểm tra trước khi đưa trở lại production.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+## Vấn đề cần giải quyết
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Với các workload quan trọng trên AWS, ransomware có thể gây ra nhiều rủi ro hơn việc mã hóa dữ liệu. Kẻ tấn công có thể cố xóa backup, thay đổi cấu hình, đánh cắp credential, hoặc để lại thay đổi độc hại trong hệ thống trước khi bị phát hiện.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Nếu doanh nghiệp chỉ restore backup mới nhất mà không kiểm tra, backup đó có thể đã nằm trong khoảng thời gian bị xâm nhập. Khi đó, hệ thống mới có thể tiếp tục mang theo lỗi, mã độc hoặc cấu hình không đáng tin cậy.
 
----
+Vì vậy, recovery plan cần trả lời được các câu hỏi:
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+- Backup có được bảo vệ khỏi việc bị xóa hay rút ngắn retention không?
+- Môi trường phục hồi có tách biệt khỏi production bị ảnh hưởng không?
+- Làm sao xác định recovery point nào đủ an toàn để dùng?
+- Phần nào nên rebuild từ code, phần nào restore từ backup, và phần nào phải tạo mới?
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+## Kiến trúc phục hồi được đề xuất
 
----
+Bài AWS đưa ra cách chia môi trường thành ba nhóm tài khoản chính trong AWS Organizations.
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+![Isolated Recovery Environment](/images/3-BlogsTranslated/Blog1/IsolatedRecoveryEnvironment(IRE).png)
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+*Nguồn: AWS Architecture Blog - Cyber resilience on AWS*
 
----
+### Production Account
 
-## The pub/sub hub
+Đây là nơi workload đang chạy thực tế. Khi xác nhận có sự cố nghiêm trọng, production account nên được cô lập để điều tra. Việc phục hồi không nên thực hiện trực tiếp trong production cũ, vì nếu môi trường này đã bị compromise thì các trust boundary, credential hoặc cấu hình hiện tại không còn đáng tin hoàn toàn.
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+### Recovery Account
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Recovery Account là nơi quản lý backup quan trọng, đặc biệt là **AWS Backup logically air-gapped vault**. Vault này giúp bảo vệ recovery point khỏi việc bị xóa trong thời gian retention, kể cả khi root user hoặc administrator bị compromise.
 
----
+Tài khoản này nên được giới hạn quyền bằng Service Control Policies (SCPs), chỉ tập trung vào hoạt động backup và restore. Như vậy, nếu production account bị tấn công, attacker không thể dễ dàng can thiệp vào backup control plane.
 
-## Core microservice
+Một điểm đáng chú ý là logically air-gapped vault hoạt động với tư duy "recovery point phải tồn tại đủ lâu để có thể điều tra và phục hồi". Vault dùng chế độ bảo vệ chặt chẽ để ngăn việc xóa hoặc rút ngắn retention trong khoảng thời gian đã cấu hình. Với dữ liệu Amazon S3, bài viết cũng nhắc đến cách tiếp cận tương đương bằng **S3 Versioning** và **S3 Object Lock ở Compliance mode**, nhằm bảo vệ object version khỏi việc bị xóa hoặc ghi đè ngoài ý muốn.
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+### Isolated Recovery Environment (IRE)
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+IRE là môi trường dùng để restore, validate và rebuild workload mới trước khi cutover. Môi trường này không có trust relationship với production account, không VPC peering với production, và không expose trực tiếp ra Internet.
 
----
+Cách thiết kế này giúp giới hạn rủi ro: nếu một backup được restore ra vẫn chứa threat, threat đó bị giữ trong môi trường cô lập thay vì lan ngược về production hoặc ra ngoài.
 
-## Front door microservice
+## Các dịch vụ AWS liên quan
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+- **AWS Backup**: quản lý backup và restore cho nhiều loại tài nguyên AWS.
+- **AWS Backup logically air-gapped vault**: bảo vệ recovery point khỏi việc bị xóa trong thời gian retention.
+- **AWS Resource Access Manager (AWS RAM)**: chia sẻ recovery point giữa các account.
+- **Amazon S3 Versioning và S3 Object Lock**: bảo vệ dữ liệu S3 khỏi xóa hoặc ghi đè trong các tình huống cần retention nghiêm ngặt.
+- **IAM Identity Center và Multi-party approval (MPA)**: yêu cầu nhiều người phê duyệt trước khi restore.
+- **Amazon GuardDuty Malware Protection**: quét malware trên volume hoặc backup được restore.
+- **AWS CloudTrail, VPC Flow Logs, AWS Security Hub**: hỗ trợ điều tra timeline và phát hiện hành vi bất thường.
+- **AWS Config và IAM Access Analyzer**: kiểm tra dependency, policy, trust relationship và cấu hình liên quan khi cutover.
+- **AWS PrivateLink / VPC endpoints**: cho phép IRE gọi AWS service API mà không cần mở Internet.
 
----
+## Quy trình phục hồi tổng thể
 
-## Staging ER7 microservice
+Bài gốc không chỉ đưa ra các thành phần kiến trúc, mà còn mô tả cách vận hành recovery theo từng giai đoạn. Mình tóm tắt lại thành 5 bước chính:
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+![Recovery workflow](/images/3-BlogsTranslated/Blog1/Recovery_workflow.jpg)
 
----
+*Nguồn: AWS Architecture Blog - Cyber resilience on AWS*
 
-## Tính năng mới trong giải pháp
+1. **Establish the timeline**: dựng lại timeline sự cố từ log, alert và dấu hiệu compromise.
+2. **Validate candidates**: chọn các recovery point có khả năng an toàn và kiểm tra trong IRE.
+3. **Approval**: yêu cầu phê duyệt trước khi dùng recovery point, đặc biệt với workload quan trọng.
+4. **Rebuild and restore**: dựng lại hạ tầng sạch, restore dữ liệu đã validate, rotate toàn bộ secret.
+5. **Cutover**: kiểm tra dependency, chuyển traffic sang môi trường mới và tiếp tục giám sát.
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Điểm hay của workflow này là nó tránh cách làm vội vàng "restore backup mới nhất rồi mở lại hệ thống". Thay vào đó, mỗi bước đều có kiểm tra và phê duyệt để giảm nguy cơ đưa threat quay lại production.
+
+## Validation pipeline: restore được chưa chắc đã an toàn
+
+Một ý mình thấy rất thực tế là: restore thành công chỉ chứng minh backup còn đọc được, chưa chứng minh backup đó an toàn.
+
+AWS đề xuất kết hợp nhiều lớp kiểm tra:
+
+- Restore testing để xác nhận backup có thể phục hồi.
+- Malware scanning để phát hiện mã độc hoặc công cụ mã hóa dữ liệu.
+- Kiểm tra đặc thù theo workload, ví dụ database consistency check hoặc so sánh cấu hình với baseline.
+- Review log và audit trail để tìm thay đổi bất thường về identity, network hoặc configuration.
+
+Các bước validation nên chạy trong IRE. Chỉ khi recovery point vượt qua các kiểm tra này thì mới được phê duyệt để restore vào môi trường rebuilt.
+
+## Chọn recovery point an toàn
+
+Trong sự cố vận hành thông thường, backup mới nhất thường là lựa chọn tốt. Nhưng trong cyber event, backup mới nhất chưa chắc an toàn, vì attacker có thể đã tồn tại trong hệ thống trước thời điểm bị phát hiện.
+
+![Selecting a safe recovery point](/images/3-BlogsTranslated/Blog1/Selecting_a_safe_recovery_point.png)
+
+*Nguồn: AWS Architecture Blog - Cyber resilience on AWS*
+
+Cách tiếp cận hợp lý là:
+
+1. Xây dựng timeline điều tra từ CloudTrail, VPC Flow Logs, GuardDuty, Security Hub và log của workload.
+2. Xác định thời điểm sớm nhất có khả năng bắt đầu sự cố.
+3. Chọn các recovery point trước mốc đó.
+4. Validate từng recovery point, bắt đầu từ bản gần nhất.
+5. Nếu validation fail, lùi về recovery point cũ hơn.
+6. Ghi lại lý do chọn recovery point và người phê duyệt.
+
+Cách này giúp giảm nguy cơ restore lại chính dữ liệu hoặc cấu hình đã bị ảnh hưởng.
+
+## Kiểm tra trước khi cutover
+
+Sau khi rebuild và restore thành công, vẫn chưa nên chuyển traffic ngay. Môi trường mới cần được kiểm tra kỹ các dependency với account, service và identity khác.
+
+Một số điểm nên review trước cutover:
+
+- IAM role trust policies và resource-based policies.
+- AWS KMS key policy, grant và quyền decrypt/encrypt.
+- Cross-account references hoặc service integrations đang trỏ về production cũ.
+- Security group, route table, DNS record và endpoint configuration.
+- Log forwarding, monitoring, alerting và backup plan cho môi trường mới.
+
+Theo mình, đây là phần rất dễ bị bỏ sót trong recovery. Nếu chỉ restore được dữ liệu nhưng thiếu KMS permission, DNS cutover sai, hoặc IAM trust policy vẫn trỏ về account cũ thì hệ thống có thể chạy lỗi hoặc tiếp tục giữ lại rủi ro bảo mật.
+
+## Framework Rebuild-Restore-Rotate
+
+Bài viết tóm gọn recovery thành ba nhóm hành động rất dễ nhớ:
+
+| Nhóm | Ví dụ | Cách xử lý |
+| --- | --- | --- |
+| Rebuild | VPC, security group, IAM role, Lambda, pipeline | Dựng lại từ Infrastructure as Code hoặc source đáng tin cậy |
+| Restore | RDS, Aurora, EBS, EFS, FSx, dữ liệu nghiệp vụ | Khôi phục từ backup đã validate |
+| Rotate | Password, API key, access key, certificate, SSH key | Tạo mới hoặc rotate, không dùng lại secret cũ |
+
+Điểm quan trọng là không nên restore mọi thứ từ backup. Hạ tầng và cấu hình nên được dựng lại từ code đã review. Dữ liệu nghiệp vụ thì restore từ backup đã kiểm tra. Credential phải được thay mới vì không thể biết chắc chúng đã bị lộ hay chưa.
+
+## Điều mình học được
+
+Trước khi đọc bài này, mình thường nghĩ backup là yếu tố chính của disaster recovery. Sau khi tìm hiểu, mình nhận ra trong ransomware recovery, backup chỉ là một phần. Điều quan trọng hơn là backup có được bảo vệ không, restore ở đâu, validate như thế nào, và credential có được rotate đầy đủ không.
+
+Mình cũng thấy mô hình tách account rất phù hợp với AWS vì AWS Organizations, SCP, RAM, Backup vault và IAM có thể kết hợp để tạo trust boundary rõ ràng. Đây là điểm khác biệt lớn so với việc chỉ lưu backup trong cùng production account.
+
+## Kết luận
+
+Cyber resilience trên AWS không chỉ là phòng thủ trước tấn công, mà là chuẩn bị để phục hồi khi một phần môi trường không còn đáng tin cậy. Cách tiếp cận với Recovery Account, IRE, logically air-gapped vault, validation pipeline và Rebuild-Restore-Rotate giúp doanh nghiệp có quy trình phục hồi rõ ràng hơn trước ransomware hoặc destructive events.
+
+Nếu áp dụng vào một hệ thống thực tế, mình nghĩ các bước nên làm sớm là:
+
+- Tạo Recovery Account và logically air-gapped vault cho workload quan trọng.
+- Chuẩn bị IRE trước, không đợi đến lúc có sự cố mới dựng.
+- Bật AWS Backup Restore Testing và kiểm thử restore định kỳ.
+- Bật GuardDuty Malware Protection cho quy trình validation.
+- Định nghĩa workload-specific integrity checks, ví dụ kiểm tra database, file hash hoặc cấu hình baseline.
+- Viết runbook cho Rebuild-Restore-Rotate.
+- Luyện tập credential rotation và cutover định kỳ.
+
+Nếu đợi đến lúc sự cố xảy ra mới thiết kế recovery plan thì khả năng downtime và sai sót sẽ rất cao. Bài viết này giúp mình hiểu rằng cyber recovery là một quy trình cần được thiết kế, kiểm thử và luyện tập trước, giống như một phần bắt buộc của kiến trúc hệ thống chứ không phải tài liệu phụ sau khi triển khai.
