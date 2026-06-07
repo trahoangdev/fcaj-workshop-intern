@@ -26,7 +26,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 6:** [Practicing tags & resource groups, IAM tag-based access control, Permission Boundary, KMS encryption, Security Hub, and Lambda cost optimization](1.6-week6/)
 
-**Week 7:** [Doing task G...](1.7-week7/)
+**Week 7:** [Practicing advanced IAM (Role Condition, Permission Boundary, Identity Center) and network security (WAF, VPC Endpoints, Security Hub)](1.7-week7/)
 
 **Week 8:** [Doing task H...](1.8-week8/)
 
