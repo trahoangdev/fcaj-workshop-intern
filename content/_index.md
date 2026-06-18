@@ -13,7 +13,7 @@ chapter: false
 {{% /notice %}} -->
 
 ### Student Information:
-&emsp; **Full Name:** Tra Hoang Trong
+&emsp; **Full Name:** Hoang Trong Tra
 
 &emsp; **Phone Number:** 0842366570
 

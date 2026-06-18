@@ -1,7 +1,7 @@
 ---
 title: "Agentic Build Day and Community Activity"
 date: 2024-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 4.3. </b> "
 ---

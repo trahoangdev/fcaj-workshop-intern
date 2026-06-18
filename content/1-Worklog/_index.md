@@ -28,7 +28,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 7:** [Practicing advanced IAM (Role Condition, Permission Boundary, Identity Center) and network security (WAF, VPC Endpoints, Security Hub)](1.7-week7/)
 
-**Week 8:** [Doing task H...](1.8-week8/)
+**Week 8:** [DocuFlow AI Research and Proposal](1.8-week8/)
 
 **Week 9:** [Doing task I...](1.9-week9/)
 
