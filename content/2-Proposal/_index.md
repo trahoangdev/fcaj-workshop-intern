@@ -1,346 +1,332 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-04-20
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-<!-- {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct. -->
 
 # DocuFlow AI - Serverless Intelligent Invoice & Receipt Processing Platform on AWS
 
-{{% notice info %}}
-**Implementation recommendation:** lock the MVP around end-to-end invoice and receipt processing using the serverless core architecture.
-{{% /notice %}}
+## An AWS Serverless Solution for Intelligent Invoice and Receipt Processing
 
 ### 1. Executive Summary
 
-DocuFlow AI is an intelligent document processing platform on AWS for Finance, Accounting, Operations, and Reviewer/Admin users in small and medium businesses. The platform allows authenticated users to upload invoices and receipts through presigned URLs, automatically extract important information with Amazon Textract, normalize and enrich the result with Amazon Bedrock, store metadata, track processing status, send alerts when processing fails or confidence is low, and let reviewers correct results when needed.
+DocuFlow AI is designed for small and medium businesses that need to process invoices and receipts with less manual work. The platform allows authenticated users to upload PDF, JPG, or PNG documents, then uses AWS managed services to extract financial fields, normalize the result, store metadata, and show the processing status in a simple web interface.
 
-The project targets a real operational pain point: manual invoice and receipt entry is slow, error-prone, hard to audit, and difficult to summarize. The architecture is suitable for an AWS workshop because it has a clear cloud design, multiple managed/serverless AWS services, an end-to-end workflow, logs, metrics, alerts, security baselines, testing, and cleanup.
+The solution uses a serverless, event-driven architecture deployed via AWS CloudFormation in `ap-southeast-1` (Singapore). Users sign in with Amazon Cognito and upload documents through presigned URLs. Amazon S3 stores the original files, EventBridge and SQS decouple ingestion from processing, Step Functions orchestrates the workflow, Amazon Textract extracts invoice and receipt data, Amazon Bedrock normalizes and enriches the extracted result, Lambda validates the final JSON, and DynamoDB stores document status and metadata.
 
-| Information | Proposed value |
-| --- | --- |
-| Project name | DocuFlow AI - Serverless Intelligent Invoice & Receipt Processing Platform on AWS |
-| Target users | Finance, Accounting, Operations, and Admin/Reviewer users in small and medium businesses |
-| Main goal | Automatically ingest, extract, normalize, store, monitor, and analyze invoices and receipts |
-| Architecture principle | Serverless, event-driven, scale-to-zero compute, no EC2 in the MVP |
-| Team size | 5 people, each owning a clear AWS module |
-| Recommendation status | Ready to implement if the MVP scope and data contract are locked before coding |
+The workshop is scoped for a five-person team. Each member owns one module: frontend/auth/upload, ingestion/workflow, AI extraction and validation, data/result dashboard, and observability/security/IaC. This makes the project practical for an internship report while still demonstrating a complete AWS serverless system.
 
 ### 2. Problem Statement
 
-Many businesses still process invoices, receipts, payment slips, and purchase documents through email, shared folders, or manual data entry. When document volume increases near the end of a month or quarter, the process becomes slow, inconsistent, and difficult to audit.
+#### What's the Problem?
 
-| Pain point | Business impact | How DocuFlow AI addresses it |
-| --- | --- | --- |
-| Manual data entry | Wrong vendor, invoice date, total amount, tax, or line items | Textract extracts fields; Lambda normalizes JSON and validates schema |
-| No processing status | Users do not know whether a file is processing, failed, or waiting for review | DynamoDB status table and frontend polling |
-| Scattered documents | Hard to search, audit, and analyze | S3 raw/processed bucket, documentId, and consistent metadata |
-| Low quality documents | OCR may miss or misread fields | Confidence score, `REVIEW_REQUIRED`, SNS alert, and manual review loop |
-| Hard-to-control operating cost | Always-on servers are wasteful for uneven workloads | Lambda, SQS, Step Functions, and event-driven processing; no EC2 in the MVP |
+Many businesses still process invoices and receipts through email, shared folders, spreadsheets, or manual data entry. This creates several issues:
 
-{{% notice note %}}
-**Scope decision:** the MVP only processes invoices and receipts. The implementation flow focuses on login, presigned URL upload, extraction, storage, result/status tracking, alerts, and manual review.
-{{% /notice %}}
+- Finance and operations teams spend repetitive time entering vendor name, invoice date, tax, total amount, and line items.
+- Manual entry can introduce wrong values, missing fields, and inconsistent document formats.
+- Users cannot easily know whether a document is uploaded, processing, failed, extracted, or waiting for review.
+- Documents are hard to search, audit, and summarize when they are spread across inboxes and shared drives.
+- Running always-on servers for an uneven document workload increases cost and operational work.
 
-### 3. Scope, Objectives and Success Criteria
+#### The Solution
 
-#### 3.1 MVP Scope
+DocuFlow AI centralizes document upload and processing on AWS. The frontend provides login, upload, status tracking, result viewing, and manual correction. The backend uses presigned URLs for secure upload to S3, then processes documents asynchronously with EventBridge, SQS, Lambda, and Step Functions.
 
-- Users sign in with Amazon Cognito and upload PDF, JPG, or PNG files through the frontend.
-- The frontend calls Amazon API Gateway and AWS Lambda to create a presigned URL and processing job.
-- Files uploaded to the S3 raw bucket trigger EventBridge, SQS, and a Step Functions Standard Workflow.
-- Amazon Textract reads invoices and receipts with AnalyzeExpense or AnalyzeDocument/StartExpenseAnalysis depending on document format and implementation approach.
-- Amazon Bedrock receives Textract output to normalize field names, classify invoice/receipt data, enrich contextual fields, and return a consistent JSON structure.
-- A Lambda validation layer checks schema, business rules, and confidence score.
-- DynamoDB stores metadata and status; the S3 processed bucket stores JSON/CSV output.
-- CloudWatch Logs, Metrics, Alarms, and Amazon SNS notify reviewers when processing fails or confidence is low.
+Amazon Textract extracts invoice and receipt fields. Amazon Bedrock receives the Textract output, maps inconsistent field names into a consistent schema, classifies the document as invoice or receipt, enriches contextual fields, and returns structured JSON. Lambda validates the schema, confidence score, and business rules before saving the result to DynamoDB and S3 processed storage.
 
-#### 3.2 Out of Scope for MVP
+#### Benefits and Return on Investment
 
-- Processing every enterprise document type; the MVP only accepts invoice and receipt.
-- EC2 for core processing compute.
-- Ingestion from external systems. Direct presigned URL upload is enough for the workshop.
+DocuFlow AI reduces manual data entry and gives teams a repeatable process for handling financial documents. The system creates a searchable metadata store, provides status visibility, and supports a review loop for low-confidence documents. Because the MVP is serverless, the platform can stay low-cost for a workshop workload and scale with document volume when needed.
 
-#### 3.3 Success Criteria
+The estimated AWS cost for the workshop workload is about **$3.00-$6.00 per month**, or **$36-$72 for 12 months** in `ap-southeast-1` (Singapore), depending on Bedrock model, token usage, and log retention. The project also provides reusable learning value for AWS serverless architecture, AI document processing, asynchronous workflows, security, monitoring, and cleanup.
 
-| Criterion | Required level |
-| --- | --- |
-| End-to-end demo | Login, upload, processing, extraction, status/result display, alert, and cleanup work successfully |
-| Extraction quality | At least vendor, invoice date, total amount, currency, tax, and line items when available |
-| Reliability | Retry, DLQ or failure path exists; document status does not remain stuck forever |
-| Observability | Logs, metrics, alarms, Step Functions execution history, and test evidence are available |
-| Security | No public bucket, no hard-coded access keys, IAM roles follow least privilege |
-| Cost control | Sample file limits, lifecycle policy, cleanup script, and basic budget alert are included |
+### 3. Solution Architecture
 
-### 4. Solution Architecture
-
-The architecture groups the solution into Frontend & Access, API, Storage & Ingestion, Processing Workflow, Data & Results, Manual Review & Notifications, Observability/Operations, and Security/Governance. Files are uploaded directly to S3 through presigned URLs, then processed asynchronously through EventBridge, SQS, Lambda, Step Functions, Amazon Textract, Amazon Bedrock, and Lambda validation.
+DocuFlow AI uses a serverless AWS architecture for secure upload, asynchronous processing, AI-assisted extraction, result storage, and operational monitoring. The high-level architecture is shown below:
 
 ![DocuFlow AI high-level serverless architecture](/images/2-Proposal/docuflow_high_level_architecture.png)
 
+#### AWS Services Used
+
+The services below are grouped by architectural layer. Each row maps directly to the Budget Estimation in section 6.
+
+**Identity & Security**
+
+- Amazon Cognito: User Pool with groups (end-user, reviewer, admin), used as the Cognito User Pool authorizer for every API Gateway endpoint.
+- AWS IAM: Least-privilege role per Lambda function and a dedicated Step Functions execution role; no shared admin role.
+- AWS KMS: AWS-managed keys (`aws/s3`, `aws/dynamodb`, `aws/sqs`) for encryption at rest; no customer-managed keys to keep cost at $0.
+
+**Frontend Delivery**
+
+- Amazon S3 + Amazon CloudFront: A private S3 bucket holds the static SPA build (HTML/JS/CSS); CloudFront fronts it with HTTPS, an Origin Access Control to S3, optional custom domain, and global edge caching. Builds run in GitHub Actions, not on AWS.
+
+**API & Compute**
+
+- Amazon API Gateway (REST): Endpoints `POST /uploads`, `GET /documents/{id}`, `GET /documents/{id}/result`, and `PUT /documents/{id}/review`, all protected by the Cognito authorizer.
+- AWS Lambda: Five Node.js 20.x functions at 256 MB — `presignUpload`, `startProcessing`, `validateExtraction`, `updateStatus`, and `reviewUpdate`.
+
+**Storage**
+
+- Amazon S3: Two buckets — `docuflow-raw` (Block Public Access, SSE-KMS, 60-day lifecycle expiration) and `docuflow-processed` (versioned, transition to STANDARD-IA after 30 days).
+- Amazon DynamoDB: On-demand table `Documents` keyed by `documentId`, with a GSI on `userId`+`status` for the user dashboard; stores metadata, status, confidence score, S3 paths, and review state.
+
+**Eventing & Workflow**
+
+- Amazon EventBridge: Default bus receives S3 `Object Created` events and routes them to SQS.
+- Amazon SQS: Standard queue plus Dead-Letter Queue (max 3 retries) to absorb spikes and isolate poison messages.
+- AWS Step Functions (Standard Workflow): An 8-state machine — `Validate` → `Textract` → `Bedrock` → `ValidateJSON` → `SaveResult` → `UpdateStatus` on the happy path, plus two terminal Catch states `MarkReviewRequired` and `MarkFailed` that update the DynamoDB item to `REVIEW_REQUIRED` or `FAILED` respectively.
+
+**AI Services**
+
+- Amazon Textract `AnalyzeExpense`: Purpose-built API for invoices and receipts; returns `SUMMARY_FIELDS` and `LINE_ITEM_FIELDS` consumed by Bedrock downstream.
+- Amazon Bedrock: Small text model (Amazon Nova Lite or Claude 3 Haiku) called with a strict system prompt, capped `maxTokens`, and a JSON-only output contract.
+
+**Observability & Notification**
+
+- Amazon CloudWatch: Logs with 7-day retention, Metrics, Alarms (Lambda error rate, Step Functions failed executions, SQS DLQ depth, Bedrock throttling), and Logs Insights for ad-hoc queries.
+- Amazon SNS: Topic `docuflow-alerts` for reviewer/admin email notifications on `FAILED` or `REVIEW_REQUIRED` documents.
+
+**Operations & Cost**
+
+- AWS CloudFormation: A single stack per environment for reproducible deployment and clean teardown.
+- AWS Budgets: Email alerts at the $5 and $10 monthly thresholds defined in section 6.
+
+#### End-to-end Flow
+
+The happy path for a single invoice or receipt traverses the system as follows:
+
+1. **Sign in** — User authenticates against Cognito and receives a JWT for downstream API calls.
+2. **Request upload slot** — Frontend calls `POST /uploads`. The `presignUpload` Lambda generates a `documentId`, writes a DynamoDB item with status `UPLOADED`, and returns a short-lived S3 presigned URL scoped to `docuflow-raw/{userId}/{documentId}.{ext}`.
+3. **Direct upload to S3** — Browser PUTs the file with the presigned URL; no document bytes ever pass through API Gateway or Lambda.
+4. **Event ingestion** — S3 emits `Object Created` to EventBridge, which routes it to SQS. The `startProcessing` Lambda consumes the message and starts a Step Functions execution; status moves to `PROCESSING`.
+5. **AI extraction** — Step Functions calls Textract `AnalyzeExpense`, then Bedrock for normalization, then the `validateExtraction` Lambda for schema and confidence checks.
+6. **Persist result** — The `SaveResult` state writes the structured JSON to `docuflow-processed` and updates the DynamoDB item to `EXTRACTED` or `REVIEW_REQUIRED` depending on confidence and validation outcome.
+7. **Notify reviewer** — On `REVIEW_REQUIRED` or `FAILED`, SNS publishes to the `docuflow-alerts` topic and sends an email to subscribers.
+8. **Review correction** — Reviewer opens the document and calls `PUT /documents/{id}/review`. The `reviewUpdate` Lambda writes corrected fields and moves status to `REVIEWED`.
+
+Failure paths are handled by Step Functions Catch branches and SQS retry/DLQ rather than ad-hoc Lambda try/catch. When any state catches an error, the workflow transitions to `MarkFailed` (or `MarkReviewRequired` for low-confidence or schema issues) and the DynamoDB status is updated accordingly. Ingestion failures occurring before Step Functions starts are absorbed by SQS retry and end up in the DLQ.
+
+### 4. Technical Implementation
+
+#### Implementation Phases
+
+The project runs in four short phases. Section 5 breaks each phase into specific weeks.
+
+1. **Design** — Lock the MVP scope, draw the architecture, and define the data contract.
+2. **Estimate** — Run AWS Pricing Calculator and confirm the workshop cost ceiling.
+3. **Refine** — Tune workflow boundaries, confidence threshold, and log retention to fit the five-person team.
+4. **Build, test, deploy** — Implement, test end-to-end, capture evidence, and verify cleanup.
+
+#### Technical Requirements
+
+- Frontend: Single-page web app stored in a private Amazon S3 bucket and served through Amazon CloudFront with Origin Access Control, with login, upload, status/result pages, and reviewer correction UI.
+- Authentication: Cognito user pool with three groups — `end-user`, `reviewer`, `admin` — wired into API Gateway as a Cognito authorizer.
+- Document Input: PDF, JPG, or PNG invoices and receipts uploaded through 5-minute presigned URLs, with frontend pre-validation on file type, size (≤10 MB), and page count.
+- Processing: Step Functions Standard Workflow (8 states) with Node.js 20.x Lambda tasks at 256 MB, Textract `AnalyzeExpense`, Bedrock normalization with capped `maxTokens`, JSON schema validation, Retry/Catch on each state, and explicit `REVIEW_REQUIRED` and `FAILED` statuses.
+- Data Model: DynamoDB table `Documents` with PK `documentId` and a GSI on `userId`+`status`. Item attributes: `documentId`, `userId`, `fileName`, `documentType`, `status`, extracted fields, `confidenceScore`, `rawS3Key`, `processedS3Key`, `createdAt`, `updatedAt`, and review fields (`reviewerId`, `reviewedAt`).
+- Observability: CloudWatch Logs (7-day retention), Metrics, and Alarms on Lambda errors, Step Functions failed executions, SQS DLQ depth, and Bedrock throttling, plus Logs Insights for ad-hoc queries.
+- Security: No public S3 buckets (Block Public Access), no hard-coded keys, least-privilege IAM role per Lambda, AWS KMS managed keys for encryption at rest, short-lived presigned URLs, and a CloudFormation teardown script.
+- Infrastructure as Code: A single AWS CloudFormation stack per environment provisions every resource above and supports clean teardown.
+- Reporting Deliverables: Test cases, screenshots covering each status transition, demo recording, and bilingual workshop instructions.
+
+#### Technology Stack
+
+The stack below complements the AWS services in section 3. It is the concrete code-level toolset the team uses to build, test, deploy, and document the platform.
+
+**Frontend**
+
+| Layer | Choice | Notes |
+|---|---|---|
+| Language | TypeScript 5 | Shared types with backend via a workspace package |
+| Framework | React 18 | Single-page app served via S3 + CloudFront |
+| Build tool | Vite | Fast HMR, zero-config TypeScript |
+| Auth | `amazon-cognito-identity-js` | Official lightweight Cognito SDK; talks to the User Pool from section 3 |
+| API client | `axios` + `@tanstack/react-query` | Axios interceptor injects the Cognito JWT; TanStack Query caches server state |
+| UI | shadcn/ui + Tailwind CSS | Component primitives, no vendor lock |
+| Forms | React Hook Form + Zod | Zod schemas reused server-side |
+| Routing | React Router v6 | |
+| Testing | Vitest (unit) | E2E is out of scope for the workshop |
+
+**Backend Lambda**
+
+| Layer | Choice | Notes |
+|---|---|---|
+| Runtime | Node.js 20.x at 256 MB | As declared in sections 3 and 4 |
+| Language | TypeScript 5 | Compiled with esbuild via SAM |
+| AWS SDK | AWS SDK v3 modular packages | `client-s3`, `s3-request-presigner`, `client-dynamodb`, `lib-dynamodb`, `client-textract`, `client-bedrock-runtime`, `client-sns`, `client-sfn` |
+| Validation | Ajv (JSON Schema) + Zod | Ajv enforces the Bedrock JSON contract; Zod validates HTTP payloads |
+| Observability | AWS Lambda Powertools for TypeScript | Structured logs, custom metrics, tracing |
+| Testing | Vitest + `aws-sdk-client-mock` | |
+
+**Infrastructure & DevOps**
+
+| Concern | Choice | Notes |
+|---|---|---|
+| IaC | AWS SAM (CloudFormation transform) | Compiles to CloudFormation; teardown via `sam delete` or `aws cloudformation delete-stack` per the section 7 contingency |
+| Local Lambda | AWS SAM CLI (`sam local invoke`, `sam local start-api`) | |
+| Bedrock model | Amazon Nova Lite (primary), Claude 3 Haiku (fallback) | Both GA in `ap-southeast-1`; Nova Lite matches the $0.10–$1.00 line in section 6 |
+| Monorepo | pnpm workspaces | |
+| Linting | ESLint + Prettier | One shared config across `apps/*`, `services/*`, `packages/*` |
+| Secrets scan | gitleaks pre-commit hook | Blocks accidental key commits |
+| CI/CD | GitHub Actions with OIDC → IAM role | Jobs: `lint-test` on PR, `deploy-dev` on `main`, `deploy-prod` on a `v*` tag |
+| Documentation | Hugo + Learn theme (this repo) | Bilingual EN/VI, diagrams in draw.io |
+
+**Repository Layout**
+
 ```text
-[User] -> [Route 53 / CloudFront + WAF] -> [Amplify + Cognito]
-       -> [API Gateway] -> [Lambda Business APIs]
-       -> [S3 Raw via presigned URL] -> [EventBridge] -> [SQS]
-       -> [Lambda Job Starter] -> [Step Functions]
-       -> [Textract] -> [Amazon Bedrock] -> [Validation]
-       -> [DynamoDB + S3 Processed]
-       -> [SNS / Manual Review if needed]
+docuflow-ai/
+├── apps/
+│   └── web/                  # React + Vite frontend
+├── packages/
+│   ├── shared-types/         # Zod schemas and DTOs
+│   └── shared-config/        # eslint, tsconfig, prettier
+├── services/
+│   ├── functions/            # 5 Lambda handlers from section 3
+│   │   ├── presignUpload/
+│   │   ├── startProcessing/
+│   │   ├── validateExtraction/
+│   │   ├── updateStatus/
+│   │   └── reviewUpdate/
+│   └── statemachines/        # ASL JSON for the 8-state Step Functions
+├── infrastructure/
+│   ├── template.yaml         # SAM root
+│   └── parameters/{dev,prod}.json
+├── samconfig.toml
+├── pnpm-workspace.yaml
+└── .github/workflows/
 ```
 
-### 5. AWS Service Selection and Rationale
+The five Lambda function folders mirror the names declared in section 3, and the state machine in `services/statemachines/` matches the 8-state workflow under "Eventing & Workflow".
 
-| Layer | AWS services | Rationale |
-| --- | --- | --- |
-| Global Edge & Frontend/Auth | Route 53, CloudFront, AWS WAF, Amplify Hosting, Cognito | Separate frontend from backend, provide CDN/protection, managed login, and a clear UI/API boundary |
-| API Layer | API Gateway REST API, Lambda Business APIs | API creates `documentId`, writes initial metadata, and returns a presigned URL so the browser uploads directly to S3 |
-| Ingestion & Orchestration | S3 raw, EventBridge, SQS, Lambda Job Starter | S3 stores originals; EventBridge/SQS decouple events from processing; Lambda starts the workflow reliably |
-| Processing Workflow | Step Functions, Textract, Amazon Bedrock, Lambda validation | Workflow validates files, calls Textract, uses Bedrock to normalize/enrich/classify output, then validates schema/confidence |
-| Data Stores | DynamoDB, S3 raw/processed/archive | DynamoDB stores status/metadata for the frontend; S3 stores raw, processed, and audit data |
-| Manual Review & Notifications | Reviewer UI, SNS, Review Update Lambda | Low-confidence items enter the review loop; reviewer corrections update status/result |
-| Observability | CloudWatch Metrics/Logs/Alarms | Track executions, Lambda errors, SQS backlog, workflow failures, and operational alerts |
-| Security & Governance | IAM, KMS, S3 Block Public Access, bucket policies | Apply least privilege, encryption, and bucket protection for financial documents |
+### 5. Timeline & Milestones
 
-### 6. End-to-End Workflow
+#### Project Timeline
 
-1. User signs in with Cognito and the frontend receives a JWT token.
-2. User selects an invoice or receipt file; the frontend calls API Gateway for a presigned URL.
-3. Lambda creates a `documentId`, writes a DynamoDB item with `UPLOADED` status, and returns the presigned URL.
-4. The frontend uploads the file directly to the S3 raw bucket.
-5. S3 Object Created event is sent through EventBridge and placed into the SQS processing queue.
-6. Lambda Job Starter reads the queue and starts a Step Functions execution with `documentId`, bucket, key, and `userId`.
-7. Step Functions validates file type, size, metadata, and updates status to `PROCESSING`.
-8. Textract extracts text, key-value fields, summary fields, and line items.
-9. Amazon Bedrock receives Textract output, normalizes field names, classifies invoice/receipt data, enriches missing or contextual fields, and returns JSON using the agreed schema.
-10. Lambda validates JSON schema, business rules, and `confidenceScore`, then decides whether the document is `EXTRACTED` or `REVIEW_REQUIRED`.
-11. Results are stored in DynamoDB and S3 processed; the frontend displays status and result.
-12. If processing fails or confidence is low, CloudWatch alarms and SNS send an alert to reviewer/admin.
-13. Reviewer corrects fields in the admin review page; update Lambda stores the corrected result and changes status to `CORRECTED` or `APPROVED`.
+- Week 1: Study FCAJ requirements, lock the MVP scope, define the data contract, and draw the architecture.
+- Week 2-3: Build foundation services: Cognito, frontend hosting, API Gateway, Lambda upload API, S3 buckets, and DynamoDB table.
+- Week 4-5: Build ingestion and workflow: EventBridge, SQS, Step Functions, retry/catch handling, and status transitions.
+- Week 6-7: Build AI extraction: Textract processing, Bedrock enrichment, JSON schema validation, confidence score, and result storage.
+- Week 8: Build result and review UI: document status page, extracted-field display, reviewer correction flow, and update API.
+- Week 9-10: Add observability, security, and IaC: CloudWatch logs/metrics/alarms, SNS alerts, IAM review, KMS encryption, AWS Budgets, and CloudFormation stack consolidation per environment.
+- Week 11: Run test cases, capture screenshots, prepare workshop instructions, and verify cleanup.
+- Week 12: Polish bilingual report content, final demo flow, budget estimate, and submission materials.
 
-### 7. Five-Person Module Ownership
+### 6. Budget Estimation
 
-| Person | Module | AWS services owned | Required deliverable |
-| --- | --- | --- | --- |
-| 1 | Frontend, Auth & Upload | Route 53/CloudFront/WAF, Amplify, Cognito, API Gateway | Login, protected route, upload UI, status/result page, presigned URL flow |
-| 2 | Ingestion & Workflow | S3 raw/processed, EventBridge, SQS, Lambda, Step Functions | Workflow trigger, retry/DLQ, status transition, failure handling, sample execution |
-| 3 | Extraction, Bedrock Enrichment & Validation | Textract, Amazon Bedrock, Lambda | Extraction JSON, invoice/receipt field mapping, Bedrock prompt/schema, confidence score, and validation logic |
-| 4 | Data Storage & Dashboard | DynamoDB, S3 processed/archive/reports, frontend summary | Metadata table, processed JSON, status query, and simple frontend dashboard/report |
-| 5 | Observability, Security & IaC | CloudWatch, SNS, IAM, KMS, S3 policies, CDK/SAM | Alarms, logs, metrics, SNS notification, least privilege policy, deploy/cleanup script |
+The budget targets a workshop-scale workload that a five-person team can run end-to-end while staying close to the AWS Free Tier. The official estimate can be created and updated with the [AWS Pricing Calculator](https://calculator.aws/#/).
 
-{{% notice tip %}}
-**Integration rule:** every member owns a separate module, but all modules must share one `documentId`, status model, JSON schema, and naming convention. Do not let each module define its own fields independently.
-{{% /notice %}}
+#### Assumptions
 
-### 8. Data Contract and Status Model
+The estimate uses the following baseline so each cost line is reproducible:
 
-The data contract must be finalized before work is split across the team. It is the contract between frontend, workflow, extraction, DynamoDB, summary dashboard, and reviewer UI.
+- Region: `ap-southeast-1` (Singapore — closest AWS region to Vietnam, lowest latency for local end users; pricing is moderately higher than `us-east-1` for CloudWatch, DynamoDB, API Gateway, and Step Functions, but still well within a workshop budget).
+- Document volume: 100 invoice/receipt files per month, average 2 pages per file (about 200 pages per month).
+- Bedrock usage: 100 enrichment requests per month, capped at about 5,000 input tokens and 2,000 output tokens per request, using a small text model (Amazon Nova Lite or Claude 3 Haiku).
+- API traffic: about 5,000 REST API calls per month across upload, status, result, and review endpoints.
+- Storage: 1 GB raw documents and 0.5 GB processed JSON/CSV.
+- Logs: about 500 MB CloudWatch log ingestion per month with a 7-day retention.
+- Users: 5–10 monthly active Cognito users (well within the always-free 50,000 MAU).
+- Step Functions: 100 Standard-workflow executions per month, about 8 states per document.
 
-```json
-{
-  "documentId": "doc-001",
-  "userId": "user-123",
-  "fileName": "invoice-001.pdf",
-  "documentType": "INVOICE",
-  "status": "EXTRACTED",
-  "vendorName": "ABC Company",
-  "invoiceDate": "2026-06-01",
-  "currency": "VND",
-  "totalAmount": 2500000,
-  "taxAmount": 250000,
-  "lineItems": [{"description": "Service fee", "amount": 2500000}],
-  "confidenceScore": 0.91,
-  "s3RawPath": "s3://docuflow-raw/invoice-001.pdf",
-  "s3ProcessedPath": "s3://docuflow-processed/doc-001.json",
-  "createdAt": "2026-06-08T10:00:00Z",
-  "updatedAt": "2026-06-08T10:02:00Z"
-}
-```
+#### Monthly Cost Breakdown
 
-| Status | Meaning | Updated by |
-| --- | --- | --- |
-| `UPLOADED` | File has been uploaded to S3 raw or a job has been created | Presigned URL Lambda / upload callback |
-| `PROCESSING` | Workflow is validating, extracting, or normalizing | Step Functions / Lambda |
-| `EXTRACTED` | Extraction succeeded and confidence is above threshold | Schema validation Lambda |
-| `REVIEW_REQUIRED` | Required field is missing or confidence is low | Schema validation Lambda |
-| `CORRECTED` | Reviewer corrected the result | Admin review page / update Lambda |
-| `FAILED` | Workflow failed, file format is invalid, or an external service failed after retry | Step Functions catch handler |
+| Service | Usage assumption | Monthly cost (USD) |
+|---|---|---|
+| Amazon Textract `AnalyzeExpense` | 200 pages | $2.00 |
+| Amazon Bedrock (small text model) | 100 requests, ~5k in / 2k out tokens | $0.10 – $1.00 |
+| AWS Lambda | ~1,000 invocations, 256 MB, ~500 ms | $0.00 – $0.10 |
+| Amazon API Gateway (REST) | ~5,000 calls | $0.02 – $0.03 |
+| Amazon S3 | 1.5 GB Standard + small request volume | $0.03 – $0.10 |
+| Amazon DynamoDB (on-demand) | 1,000 writes + 5,000 reads, < 1 GB storage | $0.05 – $0.30 |
+| Amazon EventBridge + Amazon SQS | ~100 events, low queue volume | $0.00 – $0.10 |
+| AWS Step Functions Standard | 100 executions × 8 states | $0.00 – $0.10 |
+| Amazon CloudWatch | ~500 MB logs, 7-day retention, ~5 alarms | $0.55 – $1.20 |
+| Amazon SNS | ~100 publishes | $0.00 – $0.10 |
+| Amazon Cognito | 5–10 MAU (free tier covers 50k) | $0.00 |
+| Amazon S3 (static SPA) + Amazon CloudFront | small build + demo traffic | $0.00 – $1.00 |
+| **Total** | | **$3.00 – $6.00** |
 
-### 9. Security, IAM and Compliance Baseline
+Annualized: about **$36 – $72 for 12 months**. Numbers vary with region, Bedrock model choice, token volume, and CloudWatch retention. AWS CloudFormation (deployment) and AWS Budgets (cost alerts) are also used and stay at **$0.00** within free usage limits.
 
-- S3 raw and processed buckets enable Block Public Access; the frontend never performs public writes.
-- Upload uses short-lived presigned URLs with content type and user/document prefix restrictions.
-- Cognito groups separate `EndUser`, `Reviewer`, and `Admin`; API Gateway uses an authorizer.
-- Each Lambda function and Step Functions state uses least-privilege IAM roles for specific buckets, tables, and queues.
-- Data in S3 and DynamoDB should be encrypted with SSE-S3 or KMS; logs must not store full sensitive invoice or receipt content.
-- No access keys are hard-coded in code, repository, or frontend; access uses IAM roles and least-privilege policies.
-- CloudFront can be combined with WAF; S3 static hosting should use OAC/OAI when applicable.
+#### Free Tier Impact
 
-### 10. Observability, Notification and Operations
+On a new AWS account (less than 12 months old) most line items above are absorbed by the AWS Free Tier: Lambda (1M requests + 400k GB-s/month always free), API Gateway REST (1M calls/month for 12 months), DynamoDB (25 GB storage + 25 RCU/WCU always free), S3 (5 GB for 12 months), CloudWatch (5 GB log ingestion + 10 metrics/alarms always free), SNS (1M publishes/month), Cognito (50,000 MAU always free), and Amazon CloudFront (1 TB data transfer + 10M HTTPS requests/month always free).
 
-Operations is not a secondary module. It is proof that the project can run, be debugged, and control failures during the workshop.
+Textract and Bedrock are **not** in the free tier, so a new-account workshop typically pays only **about $2 – $3 per month** out of pocket.
 
-| Item | Suggested metric/log/alert | Purpose |
-| --- | --- | --- |
-| Step Functions | `ExecutionStarted`, `ExecutionFailed`, `ExecutionSucceeded`, duration | Audit each document and debug failed states |
-| Lambda | Errors, Throttles, Duration, IteratorAge if queue-based | Detect function errors, timeouts, and abnormal retries |
-| SQS | ApproximateNumberOfMessagesVisible, DLQ depth | Detect backlog or repeated failing messages |
-| Textract + Amazon Bedrock | Request count, error count, latency, token usage, confidence distribution | Control extraction quality and AI cost |
-| DynamoDB | Consumed capacity, throttled requests, item status distribution | Monitor metadata/status store |
-| SNS | Notification delivery status | Ensure reviewers receive alerts for errors or low confidence |
+#### Scaling Scenario
 
-Recommended alarms:
+If the workload grows 10× to 1,000 documents and 2,000 pages per month, Textract scales linearly to roughly $20/month and Bedrock to about $1 – $10/month. The other services stay near current levels, putting the platform around **$25 – $40/month** at that volume.
 
-- Step Functions failed execution > 0 within 5 minutes.
-- DLQ visible messages > 0.
-- Lambda error rate exceeds the accepted threshold.
-- `REVIEW_REQUIRED` rate exceeds 30% in a demo batch.
+#### Cost Controls
 
-### 11. Analytics and Reporting
+- AWS Budgets alerts set at $5 and $10 thresholds with email notification.
+- CloudWatch log retention set to 7 days; metric filters limited to essential workflow metrics.
+- Bedrock requests capped via `maxTokens` and input length validation in Lambda.
+- S3 lifecycle policy: expire raw uploads after 60 days, move processed JSON to STANDARD-IA after 30 days.
+- Textract sample test files limited to ≤ 5 pages each during development.
+- Step Functions per-task timeouts set to 30 seconds to avoid runaway executions.
+- Final cleanup runs `aws cloudformation delete-stack` (or `sam delete`) on the workshop stack, which removes the Cognito User Pool, S3 buckets, DynamoDB table, Step Functions state machine, CloudFront distribution, API Gateway, Lambda functions, EventBridge rules, SQS queues, SNS topic, IAM roles, and CloudWatch log groups in one operation.
 
-Analytics in the MVP uses DynamoDB, S3 processed JSON, and a simple frontend summary/dashboard.
+### 7. Risk Assessment
 
-| Level | Components | Demo output |
-| --- | --- | --- |
-| MVP | DynamoDB + S3 processed JSON + frontend summary/dashboard | Total documents, total amount, number of errors, top vendor, items requiring review |
+#### Risk Matrix
 
-### 12. Implementation Roadmap
+Severity is impact × probability on a 1–3 scale (max 9). Owner refers to the workshop module accountable for the mitigation.
 
-| Phase | Duration | Goal | Output |
-| --- | --- | --- | --- |
-| Phase 0 - Design lock | Week 1 | Lock MVP, data contract, service boundaries, naming convention | Architecture diagram, JSON schema, module owner list |
-| Phase 1 - Foundation | Week 2-3 | Create IaC base, S3, Cognito, API Gateway, Lambda upload | User login and file upload to S3 raw |
-| Phase 2 - Workflow | Week 4-5 | EventBridge, SQS, Step Functions, DynamoDB status | Workflow runs from upload to `PROCESSING`/`FAILED` |
-| Phase 3 - Extraction & enrichment | Week 6-7 | Textract + Bedrock enrichment + schema validation | Extracted JSON and confidence score |
-| Phase 4 - Result UI & review | Week 8 | Result page, review page, correction flow | User views result; reviewer corrects fields |
-| Phase 5 - Observability & MVP dashboard | Week 9-10 | CloudWatch alarms, SNS, DynamoDB/S3 processed summary | Operations dashboard and simple dashboard/summary |
-| Phase 6 - Testing & documentation | Week 11 | Test cases, screenshots, workshop steps | Lab guide, expected results, failure test |
-| Phase 7 - Final polish | Week 12 | Cleanup, cost review, bilingual report | Final demo and report website |
+| ID | Risk | Impact | Probability | Severity | Owner |
+|---|---|---|---|---|---|
+| R-01 | Scope creep beyond invoice/receipt MVP | High (3) | Medium (2) | 6 | Tech lead |
+| R-02 | Low Textract accuracy on poor scans | High (3) | Medium (2) | 6 | AI module |
+| R-03 | Bedrock returns malformed JSON / wrong schema | Medium (2) | Medium (2) | 4 | AI module |
+| R-04 | Asynchronous workflow failure (Step Functions / SQS) | High (3) | Low (1) | 3 | Workflow module |
+| R-05 | Cost overrun beyond $10/month budget | Medium (2) | Low (1) | 2 | IaC/Ops module |
+| R-06 | IAM misconfiguration exposes data | High (3) | Low (1) | 3 | Security module |
+| R-07 | Selected Bedrock model not GA in `ap-southeast-1` | Medium (2) | Low (1) | 2 | AI module |
+| R-08 | Presigned URL leaked from frontend or logs | High (3) | Low (1) | 3 | Frontend / Security |
+| R-09 | Document edge cases (low-DPI scan, encrypted, oversized) | Medium (2) | Medium (2) | 4 | AI module |
 
-### 13. Workshop Structure
+#### Mitigation Strategies
 
-| Section | Content to write | Evidence required |
-| --- | --- | --- |
-| 5.1 Introduction | Document processing problem for SME Finance/Ops and high-level architecture | Goals and architecture diagram |
-| 5.2 Prerequisite | AWS account, region, IAM permissions, CLI, CDK/SAM, sample invoice PDF/JPG | Environment checklist |
-| 5.3 Frontend & Auth | Deploy Amplify/S3 static, Cognito, API Gateway authorizer | Login and protected page screenshot |
-| 5.4 Ingestion & Workflow | S3 raw, EventBridge, SQS, Step Functions, DynamoDB status | Execution history and queue/DLQ setup |
-| 5.5 AI Extraction | Textract, Bedrock enrichment, schema mapping, confidence calculation | Sample extracted JSON |
-| 5.6 Data & Analytics | DynamoDB, S3 processed, frontend summary/dashboard | Metadata/status query, processed JSON, simple dashboard |
-| 5.7 Observability & Cleanup | CloudWatch logs, metrics, alarms, SNS, cleanup script | Alarm test and cleanup commands |
+- **R-01 (Scope)**: Lock the MVP to invoice and receipt only; any new document type goes through a change-request review before entering the backlog.
+- **R-02 (Extraction)**: Use clear sample documents during dev, set a confidence threshold of 0.7, and route low-confidence results to `REVIEW_REQUIRED` for the human review path.
+- **R-03 (Bedrock JSON)**: Strict system prompt with a JSON-only contract, JSON schema validation in `validateExtraction` Lambda, automatic retry once, then mark `REVIEW_REQUIRED` if the structure is still invalid.
+- **R-04 (Workflow)**: Step Functions Catch states on each task, SQS Standard queue with DLQ at 3 retries, CloudWatch alarm on DLQ depth, and clear DynamoDB status transitions.
+- **R-05 (Cost)**: AWS Budgets alerts at $5 and $10, CloudWatch log retention capped at 7 days, Bedrock `maxTokens` cap, S3 lifecycle policies, and a Textract sample limit of ≤5 pages per file during development.
+- **R-06 (IAM)**: One IAM role per Lambda function, Step Functions execution role separated from task roles, AWS KMS managed keys for storage, S3 Block Public Access on every bucket, and a periodic IAM Access Analyzer review.
+- **R-07 (Bedrock region)**: Verify the chosen model is GA in `ap-southeast-1` before development; if not, fall back to a cross-region invoke against `us-east-1` for Bedrock only, isolated behind one Lambda with a `BEDROCK_REGION` env var.
+- **R-08 (Presigned URL)**: TTL of 5 minutes per URL, scope each URL to a single object key, never log the full URL, and filter URLs out of client-side error reports.
+- **R-09 (Edge cases)**: Frontend pre-validates file type, size (≤10 MB), and page count; backend returns a structured error and writes the file to a `quarantine/` S3 prefix for manual triage.
 
-### 14. Test Plan and Validation
+#### Contingency Plans
 
-| Test case | Input | Expected result |
-| --- | --- | --- |
-| Happy path invoice | Clear invoice PDF | Status `EXTRACTED`; vendor/date/total/currency/line items are available |
-| Low quality receipt | Blurry receipt or missing fields | Status `REVIEW_REQUIRED`; SNS alert is sent to reviewer |
-| Invalid file type | `.exe` file or oversized file | File is rejected or status is `FAILED`; Textract is not called |
-| Unauthenticated upload | User is not signed in | Presigned URL cannot be generated |
-| Batch upload | 5-10 files in a row | SQS/Step Functions process jobs without loss; status updates correctly |
-| Textract + Bedrock failure | Simulated error, quota issue, or service failure | Retry/catch works; DLQ or `FAILED` path contains logs |
-| Analytics query | Processed JSON sample + DynamoDB metadata | Frontend summary/dashboard returns total amount by vendor/month or status |
-| Cleanup | Run destroy/delete script | Stack, bucket objects, alarms, and demo data are removed after the workshop |
+- **R-02 / R-03 demo failure**: Use a prepared sample extraction result to demonstrate the status/result UI while showing the failed Step Functions execution history for transparency.
+- **R-04 backlog growth**: Pause uploads, inspect SQS and DLQ, then replay only a small sample batch after fixing the root cause.
+- **R-05 cost spike**: Stop test uploads, drop CloudWatch retention to 1 day, empty raw and processed buckets, and run the CloudFormation `delete-stack` script if needed.
+- **R-06 IAM exposure**: Rotate any leaked credential, disable the affected role, and re-deploy the stack from a clean commit.
+- **R-07 Bedrock outage**: Switch the Lambda env var `BEDROCK_REGION` to a fallback region for the duration of the demo.
+- **R-08 URL leak**: Invalidate the user's active credentials, re-issue presigned URLs, and audit CloudFront / API Gateway logs for the leaked URL pattern.
 
-### 15. Budget Estimation
+### 8. Expected Outcomes
 
-You can create and update the official estimate with the [AWS Pricing Calculator](https://calculator.aws/#/). The numbers below are a working estimate for the workshop MVP and should be rechecked for the selected AWS Region before submission.
+#### Technical Improvements
 
-#### Budget Assumptions
+DocuFlow AI replaces manual invoice and receipt entry with a serverless document-processing workflow. It provides secure upload, automated Textract extraction, Bedrock normalization and enrichment, schema validation, metadata storage, status tracking, review handling, notifications, and operational logs.
 
-- Region: `ap-southeast-1` (Singapore), unless the team chooses another region during implementation.
-- Workload for MVP demo: 100 invoice/receipt files per month.
-- Average document size: 2 pages per file, or about 200 Textract pages per month.
-- Bedrock enrichment: 100 requests/month, about 2,000 input tokens and 500 output tokens per document.
-- File storage: up to 1 GB raw documents and processed JSON/CSV output during the workshop.
-- Users: 5-10 workshop/demo users authenticated with Cognito.
+#### Success Criteria
 
-#### Infrastructure Costs
+The workshop is considered complete when each of the following has evidence:
 
-| AWS service | MVP usage assumption | Estimated monthly cost |
-| --- | --- | --- |
-| Amazon Textract | AnalyzeExpense for about 200 pages/month | About $2.00 |
-| Amazon Bedrock | About 100 enrichment requests/month with a small text model and capped token usage | About $0.10-$1.00 |
-| AWS Lambda | Upload API, workflow starter, validation, review update; low request volume | About $0.00-$0.10 |
-| Amazon API Gateway | A few thousand REST API calls/month | About $0.01 |
-| Amazon S3 | About 1 GB raw + processed data, small request volume | About $0.03-$0.10 |
-| Amazon DynamoDB | On-demand metadata/status table, small read/write volume | About $0.05-$0.25 |
-| Amazon EventBridge + Amazon SQS | ObjectCreated events and processing queue for demo volume | About $0.00-$0.10 |
-| AWS Step Functions Standard | About 100 executions/month, several states per document | About $0.00-$0.10 |
-| Amazon CloudWatch | Logs, metrics, and basic alarms for demo workload | About $0.50-$1.00 |
-| Amazon SNS | Reviewer/admin alert notifications, low volume | About $0.00-$0.10 |
-| Amazon Cognito | 5-10 monthly active users | About $0.00 |
-| AWS Amplify Hosting + Amazon CloudFront | Small frontend build/hosting traffic for workshop demo | About $0.50-$2.00 |
+- Extraction accuracy ≥ 90% on a curated test set of 20 sample invoices and receipts.
+- End-to-end processing latency ≤ 60 seconds at the 95th percentile.
+- Workshop monthly AWS cost stays at or below **$10**, verified via AWS Budgets and Cost Explorer.
+- Every Lambda function has its own least-privilege IAM role; no role is shared across functions.
+- All four DynamoDB terminal status paths exercised with screenshots: `EXTRACTED`, `REVIEW_REQUIRED`, `FAILED` (via Step Functions Catch or SQS DLQ), and `REVIEWED`.
+- The CloudFormation stack deploys cleanly from a fresh account and tears down without manual cleanup.
+- Bilingual report (EN/VI) covers each of the eight workshop modules in `5-Workshop`.
 
-**Estimated MVP total:** about **$3.50-$7.00/month**, or **$42.00-$84.00 for 12 months**, depending on selected region, selected Bedrock model, token usage, frontend hosting choice, and log retention.
+#### Long-term Value
 
-### 16. Cost Control and Cleanup
-
-#### 16.1 Cost-Control MVP Decision
-
-{{% notice info %}}
-**Cost-control decision:** the MVP only processes invoices and receipts. The team only implements the core services needed for login -> upload -> extraction -> storage -> result/status -> alert -> manual review.
-{{% /notice %}}
-
-| Category | MVP decision | Cost control note |
-| --- | --- | --- |
-| Document types | Clear invoice and receipt samples only | Keep sample count small during demo |
-| AI services | Textract + Amazon Bedrock + Lambda schema validation | Limit processed pages, Bedrock requests, and token usage |
-| Analytics | DynamoDB + S3 processed + simple frontend summary/dashboard | Avoid extra BI services and query only processed demo data |
-| Operations | CloudWatch Logs/Metrics/Alarms + SNS | Keep log retention short and alert volume low |
-
-- Limit the demo to 5-10 small invoice/receipt files; do not upload large batches before budget alert is enabled.
-- Apply lifecycle policies to S3 raw/processed buckets so demo data is transitioned or deleted after a short period.
-- Textract is charged by request/page; Bedrock is charged by model/token usage. Limit request count, page count, and token usage, then document the selected Textract API and Bedrock model.
-- Do not run large batches outside demo data; all test files should use a dedicated prefix for easy cleanup.
-- MVP dashboard reads directly from DynamoDB/S3 processed through the API and does not require a separate BI layer.
-- CDK/SAM must include deploy and destroy commands; S3 bucket objects must be removed before stack destruction.
-
-### 17. Risks and Mitigations
-
-| Risk | Impact | Mitigation |
-| --- | --- | --- |
-| Scope is too broad | End-to-end demo is not completed | Lock invoice/receipt MVP and avoid adding non-core services |
-| Textract misreads unusual formats | Financial data is wrong | Use clear samples, confidence threshold, and manual review loop |
-| Bedrock or schema mapping returns invalid JSON | Frontend or analytics fails | Define a strict prompt/schema, validate output in Lambda, retry/fallback |
-| Analytics service exceeds MVP | Cost increases and demo is delayed | Use DynamoDB/S3 processed + simple frontend dashboard |
-| IAM policies are too broad | Security risk and lower evaluation score | Use separate least-privilege roles for each module and no hard-coded keys |
-| Async workflow is hard to demo | Users cannot see results immediately | Use status polling, execution history, and stable sample dataset |
-| AI cost exceeds expectation | Budget impact | Limit pages/files, enable budget alert, and clean up after the demo |
-
-### 18. Definition of Done
-
-- Clear architecture diagram with AWS services and data flow.
-- Five module owners with measurable deliverables.
-- Real upload to S3 raw and real workflow trigger.
-- At least one invoice or receipt processed by Textract, Bedrock, and Lambda validation into JSON.
-- DynamoDB status table and a frontend/result view or API to inspect results.
-- Failure path for invalid file or low confidence producing `REVIEW_REQUIRED`/`FAILED`.
-- CloudWatch logs, metric/alarm, and SNS notification.
-- Test cases with expected results and screenshot/log evidence.
-- Cost controls, cleanup steps, and no expensive resources left after demo.
-- Main report/workshop content available in English and Vietnamese when submitting with the FCAJ template.
-
-### 19. References
-
-- [FCAJ project rules](https://hcm-rules.awsfcaj.com/3-project/)
-- [FCAJ proposal sample](https://workshop-sample.awsfcaj.com/2-proposal/)
-- [FCAJ workshop sample](https://workshop-sample.awsfcaj.com/5-workshop/)
-- [Amazon Textract - Analyzing Invoices and Receipts](https://docs.aws.amazon.com/textract/latest/dg/analyzing-document-expense.html)
-- [Amazon Bedrock user guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)
-- [AWS Step Functions - Choosing workflow type](https://docs.aws.amazon.com/step-functions/latest/dg/choosing-workflow-type.html)
-- [Amazon S3 EventBridge notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html)
-- [Amazon Textract pricing](https://aws.amazon.com/textract/pricing/)
-- [Amazon Bedrock pricing](https://aws.amazon.com/bedrock/pricing/)
-- [AWS Lambda pricing](https://aws.amazon.com/lambda/pricing/)
-- [Amazon S3 pricing](https://aws.amazon.com/s3/pricing/)
-- [AWS Step Functions pricing](https://aws.amazon.com/step-functions/pricing/)
-- [Amazon API Gateway pricing](https://aws.amazon.com/api-gateway/pricing/)
-- [Amazon DynamoDB pricing](https://aws.amazon.com/dynamodb/pricing/)
-- [Amazon SNS pricing](https://aws.amazon.com/sns/pricing/)
-- [AWS Amplify pricing](https://aws.amazon.com/amplify/pricing/)
+The project creates a reusable foundation for financial document processing on AWS. Future teams can extend the same pattern to more document types, stronger validation rules, richer reporting, and deeper finance-system integration. For FCAJ, the workshop demonstrates practical use of AWS serverless services, AI document processing, cost control, security, observability, and cleanup in one coherent solution.
