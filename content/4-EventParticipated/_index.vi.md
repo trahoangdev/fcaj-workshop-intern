@@ -22,7 +22,7 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.-->
 
 
-Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 4 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-Event1/)
 &emsp;**Tên sự kiện:** Community Day FCAJ HCM
@@ -52,6 +52,17 @@ Trong quá trình thực tập, em đã tham gia 3 events, với mỗi event là
 &emsp;**Thời gian:** 13:00 ngày 29/05/2026
 
 &emsp;**Địa điểm:** AWS Event Hall, Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+
+
+### [Event 4](4.4-Event4/)
+&emsp;**Tên sự kiện:** Amazon Quick & Kiro Fiesta #2
+
+&emsp;**Thời gian:** 09:00 ngày 19/06/2026
+
+&emsp;**Địa điểm:** Văn phòng AWS Vietnam, thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
