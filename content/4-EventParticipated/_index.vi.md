@@ -22,10 +22,10 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.-->
 
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 5 events. Mỗi event là một trải nghiệm đáng nhớ, mang đến những kiến thức mới, bổ ích, cùng những món quà và khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** Community Day FCAJ HCM
+&emsp;**Tên sự kiện:** FCAJ Community Day
 
 &emsp;**Thời gian:** 09:00 ngày 09/05/2026
 
@@ -43,4 +43,37 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 &emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+
+
+### [Event 3](4.3-Event3/)
+&emsp;**Tên sự kiện:** Agentic Build Day and Community Activity
+
+&emsp;**Thời gian:** 13:00 ngày 29/05/2026
+
+&emsp;**Địa điểm:** AWS Event Hall, Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+
+
+### [Event 4](4.4-Event4/)
+&emsp;**Tên sự kiện:** Amazon Quick & Kiro Fiesta #2
+
+&emsp;**Thời gian:** 09:00 ngày 19/06/2026
+
+&emsp;**Địa điểm:** Văn phòng AWS Vietnam, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự 
+
+
+
+### [Event 5](4.5-Event5/)
+&emsp;**Tên sự kiện:** FCAJ Community Day
+
+&emsp;**Thời gian:** 09:00 ngày 27/06/2026
+
+&emsp;**Địa điểm:** Tòa nhà Bitexco Financial Tower, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự
 

@@ -24,15 +24,15 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 5:** [Practicing tags, IAM least privilege, KMS encryption, Security Hub, Lambda cost optimization, and Grafana](1.5-week5/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+**Week 6:** [Practicing tags & resource groups, IAM tag-based access control, Permission Boundary, KMS encryption, Security Hub, and Lambda cost optimization](1.6-week6/)
 
-**Week 7:** [Doing task G...](1.7-week7/)
+**Week 7:** [Practicing advanced IAM (Role Condition, Permission Boundary, Identity Center) and network security (WAF, VPC Endpoints, Security Hub)](1.7-week7/)
 
-**Week 8:** [Doing task H...](1.8-week8/)
+**Week 8:** [DocuFlow AI Research and Proposal](1.8-week8/)
 
-**Week 9:** [Doing task I...](1.9-week9/)
+**Week 9:** [Building the DocuFlow AI foundation: Cognito, S3, DynamoDB, upload API, and frontend hosting](1.9-week9/)
 
-**Week 10:** [Doing task L...](1.10-week10/)
+**Week 10:** [DocuFlow AI Architecture and Documentation Revision](1.10-week10/)
 
 **Week 11:** [Doing task M...](1.11-week11/)
 

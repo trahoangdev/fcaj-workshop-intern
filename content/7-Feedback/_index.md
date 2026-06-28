@@ -6,42 +6,41 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+The following comments reflect my personal experience during the **First Cloud AI Journey** program. I hope this feedback can help the program continue improving the learning and hands-on experience for future interns.
 
 ### Overall Evaluation
 
 **1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+The First Cloud Journey learning and working environment emphasizes self-direction. Instead of learning theory alone, I was expected to read documentation, complete workshops, test my deployments, and clean up AWS resources. This approach strengthened my independent research skills and made me more responsible for my own progress.
 
 **2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+The program roadmap and learning resources helped me identify what to study at each stage. Review milestones covering the idea, architecture, implementation, and workshop allowed me to receive feedback and adjust the project step by step. While developing DocuFlow AI, I had room to analyze problems and experiment independently while also using clear deliverable criteria to review my work before submitting it.
 
 **3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+The internship content was relevant to my Information Technology major. My foundational knowledge of programming, networking, databases, and security was extended through practical AWS work. In particular, designing DocuFlow AI helped me connect software development with cloud architecture, security, cost, and operational considerations.
 
 **4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+The program provided extensive hands-on opportunities with the AWS Management Console, AWS CLI, and services across multiple domains, including IAM, VPC, S3, EC2, Lambda, DynamoDB, KMS, and Security Hub. Beyond technical skills, I improved my ability to read documentation, analyze risks, estimate costs, write proposals, and present a structured technical solution.
 
 **5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+I value the knowledge-sharing culture represented by the workshop system, AWS Study Group materials, and community activities. Participating in events and researching my project exposed me to more perspectives on cloud and AI. The program could add more peer review sessions where interns share their progress, challenges, and lessons learned from their projects.
 
 **6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+The program provides an internship roadmap, workshop resources, and opportunities to participate in AWS-related learning activities. Its flexible and self-directed structure allowed me to balance studying, hands-on practice, and project development. The shared checklist for the proposal, architecture diagram, source code, test evidence, workshop, and resource cleanup helped me track all required deliverables and avoid overlooking important requirements.
 
 ---
 
 ### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
 
----
+**What I found most satisfying:** I was able to learn through hands-on work and apply that knowledge to a concrete project. Revising the DocuFlow AI architecture from a mandatory Amazon Bedrock dependency to an External AI Adapter taught me that a good solution must not only be technically sound but also fit access constraints, cost limits, and the deployment context.
+
+**What the program could improve:** Now that clear checklists and review milestones are in place, the program could add more real-world case analysis sessions. Topics such as incident response, system monitoring, cost optimization, and post-deployment security reviews would help interns understand the gap between completing a lab and operating a system in practice.
+
+**Whether I would recommend the program:** I would recommend First Cloud AI Journey to friends who are interested in cloud computing and AWS. It is particularly suitable for learners who want hands-on experience and are prepared to proactively read documentation, experiment, and solve problems.
 
 ### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+
+* Continue maintaining the existing project demo and technical sharing events, as they provide valuable opportunities to learn from the architecture, technical decisions, challenges, and practical experience of other participants.
+* Add case studies on post-deployment operations, including observability, incident response, security reviews, and FinOps.
+* Offer optional guidance sessions on career paths, AWS certifications, and how interns can continue developing their portfolios after the program.
+* I would like to continue learning about serverless architecture, cloud security, observability, and operating AWS systems in real environments. If possible, I would also like to continue developing DocuFlow AI into a product that can be deployed and evaluated end to end.

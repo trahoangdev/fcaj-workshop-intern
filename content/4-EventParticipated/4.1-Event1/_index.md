@@ -1,5 +1,5 @@
 ---
-title: "Community Day FCAJ HCM"
+title: "FCAJ Community Day"
 date: 2024-01-01
 weight: 1
 chapter: false
@@ -10,7 +10,7 @@ pre: " <b> 4.1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
 {{% /notice %}}-->
 
-# Summary Report: “Community Day FCAJ HCM”
+# Summary Report: “FCAJ Community Day”
 
 ### Event Objectives
 

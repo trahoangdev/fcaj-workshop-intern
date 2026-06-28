@@ -1,31 +1,30 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-04-20
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# DocuFlow AI - Building a Serverless Invoice & Receipt Processing Platform
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+This workshop builds **DocuFlow AI**, a serverless platform that lets authenticated users upload invoices and receipts, then automatically extracts financial fields using Amazon Textract and Amazon Bedrock. The result is stored, tracked by status, and surfaced in a web dashboard with a manual review loop for low-confidence documents.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+You will build the system incrementally, one module at a time. Each module adds resources to a single AWS SAM stack deployed in `ap-southeast-1` (Singapore), so the platform grows from an empty template to a complete event-driven pipeline.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
+#### Architecture
+
+The platform uses a serverless, event-driven architecture: Amazon Cognito for auth, Amazon S3 + CloudFront for the frontend, API Gateway and Lambda for the API, EventBridge and SQS for ingestion, Step Functions for orchestration, Textract and Bedrock for AI extraction, DynamoDB for metadata, and CloudWatch and SNS for observability.
 
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Workshop Overview](5.1-Workshop-overview/)
+2. [Prerequisites](5.2-Prerequisite/)
+3. [Frontend, Auth, and Upload](5.3-Frontend-Auth-Upload/)
+4. [Storage, Ingestion, and Workflow](5.4-Storage-Ingestion-Workflow/)
+5. [AI Extraction with Bedrock](5.5-AI-Extraction-Bedrock/)
+6. [Data, Result, and Review](5.6-Data-Result-Review/)
+7. [Observability and Security](5.7-Observability-Security/)
+8. [Cleanup](5.8-Cleanup/)
