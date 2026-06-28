@@ -21,10 +21,10 @@ pre: " <b> 4. </b> "
 > * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
 > * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.-->
 
-During my internship, I participated in four events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+During my internship, I participated in five events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
 ### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** Community Day FCAJ HCM  
+&emsp;**Event Name:** FCAJ Community Day
 
 &emsp;**Date & Time:** 09:00, May 09, 2026
 
@@ -64,3 +64,14 @@ During my internship, I participated in four events. Each one was a memorable ex
 &emsp;**Location:** AWS Vietnam Office, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  
+
+---
+
+### [Event 5](4.5-Event5/)
+&emsp;**Event Name:** FCAJ Community Day
+
+&emsp;**Date & Time:** 09:00, June 27, 2026
+
+&emsp;**Location:** Bitexco Financial Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
+
+&emsp;**Role:** Attendee

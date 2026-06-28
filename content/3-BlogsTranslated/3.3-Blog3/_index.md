@@ -1,126 +1,125 @@
 ---
 title: "Blog 3"
 date: 2024-01-01
-weight: 1
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Architecting an AI-Powered Resilience Framework on AWS
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+## References
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+- AWS Architecture Blog: [Architecting AI-powered resilience framework on AWS](https://aws.amazon.com/vi/blogs/architecture/architecting-ai-powered-resilience-framework-on-aws/)
+- Author: Medha Shree
+- Published: June 22, 2026
 
----
+## Reading This Changed How I Think About Resilience
 
-## Architecture Guidance
+Before reading this article, I usually thought about resilience in terms of familiar AWS patterns: Multi-AZ, Auto Scaling, health checks, backups, retries, and failover. All of those are important, but this blog made me focus on a harder question: **how do we know those resilience mechanisms actually work when failure happens?**
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+A system can look resilient in an architecture diagram, but production keeps changing. A new service call appears, a connection string gets hard-coded, a timeout value is misconfigured, a temporary dependency becomes permanent, or a quick hotfix never makes it back into the documentation. When an incident happens, the team may discover that an important weakness was never tested.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+The main message I took from the AWS blog is simple: **resilience should be proven continuously, not assumed once during design**.
 
-**The solution architecture is now as follows:**
+## Why Resilience Testing Is Difficult
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+At the infrastructure level, it is easy to list the services an application uses: EC2, RDS, Lambda, DynamoDB, S3, or a load balancer. But resilience is not only about resources. It also depends on how the application calls dependencies, how retries are configured, how timeouts behave, how circuit breakers react, and how the team recovers when something fails.
 
----
+The problem is that this information is scattered across many places: architecture diagrams, CloudFormation or Terraform, source code, runbooks, logs, dashboards, and the knowledge of individual teams. When systems deploy continuously, documentation falls behind quickly.
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+That is why the article proposes an AI-powered resilience framework. AI is not used to randomly break systems. It is used to help teams understand the system more deeply, find hidden dependencies, generate relevant experiments, and bring resilience testing into the normal development workflow.
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+## The Five-Layer Framework
 
----
+The AWS article breaks the framework into five layers: Discovery, Test Generation, Experimentation, Gap Analysis, and Continuous Validation. I understand them this way:
 
-## Technology Choices and Communication Scope
+| Layer | My interpretation |
+| --- | --- |
+| Discovery | Find what the system actually depends on |
+| Test Generation | Create failure scenarios that match the system’s real risks |
+| Experimentation | Run chaos experiments with guardrails and stop conditions |
+| Gap Analysis | Analyze weaknesses and prioritize remediation |
+| Continuous Validation | Bring resilience checks into CI/CD to prevent regressions |
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+What I like about this structure is that it creates a loop. Resilience testing is not something the team runs once and forgets. Every time the system changes, the dependency map and experiments should evolve with it.
 
----
+## Discovery Is the Part Teams Often Underestimate
 
-## The Pub/Sub Hub
+The Discovery layer stood out to me the most. The next generation of AWS Resilience Hub can perform native dependency discovery to identify AWS services, internal endpoints, and third-party endpoints used by an application. A custom agent running on Amazon Bedrock AgentCore can then extend this analysis into code and Infrastructure as Code.
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+The agent can inspect CloudFormation, Terraform, source repositories, connection strings, timeout settings, retry logic, and circuit breakers. This matters because many resilience issues do not show up in architecture diagrams. They live in runtime behavior and application code.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+For example, a database may run in Multi-AZ mode, but if the application does not retry connections properly during failover, users can still see errors. On paper, the architecture looks resilient. In practice, the application behavior may not be.
 
----
+According to the article, initial discovery can reduce infrastructure mapping from weeks to hours for a single-account environment with thousands of resources. Later runs can process only changes tracked by AWS Config. That is valuable because the architecture map becomes closer to the actual runtime state instead of a static document.
 
-## Core Microservice
+## AI Helps Generate Experiments with Context
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+After the system understands dependencies, the next step is experiment generation. This is where Amazon Bedrock and Amazon Bedrock AgentCore become useful.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+Instead of running generic tests like “stop an instance” or “inject latency” without a clear reason, the framework uses system context to generate meaningful hypotheses. It can combine the dependency map, RTO, RPO, availability targets, application tier, and business impact to prioritize experiments.
 
----
+For example, if a customer-facing service depends on a critical database, a database failover experiment may deserve higher priority than a low-impact internal test. If a dependency looks like a single point of failure, experiments around that dependency should move up the list.
 
-## Front Door Microservice
+This is where AI adds real value. It does not completely replace SREs or cloud architects. It acts more like an assistant that gathers context, highlights risk, and suggests what to validate. Whether an experiment should run in production still requires approval, review, and guardrails. The article also recommends AWS Step Functions for manual approval workflows before sensitive experiments run.
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+## Chaos Engineering Is Not Randomly Breaking Systems
 
----
+Chaos engineering is sometimes misunderstood as intentionally breaking production. This article makes the opposite point: experiments must be controlled.
 
-## Staging ER7 Microservice
+AWS Fault Injection Service can run scenarios such as terminating EC2 instances, injecting network latency, throttling API calls, failing over Amazon RDS, or simulating Availability Zone connectivity issues. But experiments should not begin with a large blast radius. The article suggests starting small, such as 1% of resources, and then expanding to 5%, 10%, or 25% only when results remain safe.
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+Amazon CloudWatch alarms act as stop conditions. If error rate, latency, or availability approaches a risky threshold, the experiment should stop before it seriously affects the SLA. This is what makes chaos engineering practical: the goal is to learn from failure inside a safe boundary, not to create another outage.
 
----
+## Every Experiment Should Teach the System Something
 
-## New Features in the Solution
+Running experiments only to generate reports is not enough. The article adds a Gap Analysis layer to turn test results into action.
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+AWS Resilience Hub can correlate experiment outcomes with resilience policies and classify gaps across architecture, operations, data protection, and testing coverage. Each gap is prioritized by severity, likelihood, and business impact. That makes sense because not every gap deserves the same urgency.
+
+Another useful point is the role of AWS Systems Manager Automation documents. If a recovery procedure is validated through an experiment, the team can codify it as an automation runbook. Over time, this can reduce MTTR because the team is not reinventing recovery steps during a real incident.
+
+In other words, the framework does not only find weaknesses. It helps turn lessons from testing into reusable improvements.
+
+## Bringing Resilience into CI/CD
+
+The Continuous Validation layer makes the framework feel practical. Resilience testing should not be something teams run occasionally or only before a major launch. It should be part of the pipeline.
+
+The article suggests a two-tier model. The lightweight tier is policy-as-code checking, such as using Open Policy Agent to validate Infrastructure as Code or Dockerfiles. These checks run quickly on every commit and can catch basic issues like missing health checks, single-AZ configuration, or missing resilience baselines.
+
+The heavier tier is a full resilience assessment, better suited for pre-production gates or significant architecture changes. For routine deployments, teams can run a smaller set of regression tests around critical scenarios such as database failover, Availability Zone loss, or circuit breaker activation.
+
+This is a realistic approach because it avoids slowing down every pipeline run while still catching meaningful risks before production. Resilience shifts left, similar to how security testing and unit testing became part of modern delivery workflows.
+
+## Scaling to Enterprise Requires Discipline
+
+The article also recommends a phased rollout. It would be risky to apply the framework to all production workloads immediately.
+
+A good starting point is a non-critical application with a well-understood architecture. Enable AWS Config, deploy the discovery agent on Amazon Bedrock AgentCore, and run a baseline assessment in AWS Resilience Hub. After the team understands the workflow, expand to a few applications across different tiers and run small-scope experiments during low-traffic windows.
+
+At enterprise scale, the article discusses multi-account architecture, centralized reporting, cross-account experiment coordination, shared templates through AWS Organizations, and dashboards with Amazon QuickSight. At that stage, tiered resilience policies matter because a mission-critical workload should not have the same RTO, RPO, or testing cadence as a low-impact internal workload.
+
+## AI Agent Security Is Part of the Architecture
+
+One point I would not skip is agent security. Because the agent can read infrastructure, code, and configuration context, its permissions must be scoped carefully.
+
+The article emphasizes least privilege, read-only access during discovery, audit trails through AWS CloudTrail, encryption with AWS KMS, and guardrails for Amazon Bedrock. Amazon Bedrock AgentCore Runtime also provides MicroVM session isolation so each discovery session runs in a separated environment.
+
+For me, this is an important reminder: using AI in cloud operations does not mean giving AI unlimited control. The agent needs clear boundaries, scoped IAM permissions, logging, approval gates, and guardrails.
+
+## What I Took Away
+
+This blog made me think about resilience testing in a more mature way. Before reading it, I saw AWS FIS experiments as the main activity. Now I think the stronger starting point is dependency discovery. If the dependency map is wrong, experiments can look sophisticated while testing the wrong thing.
+
+AI fits this problem because resilience involves many types of context: infrastructure, code, dependencies, RTO/RPO, business impact, previous experiment results, and CI/CD changes. An AI agent can combine those signals and suggest better tests, but execution still needs guardrails, approvals, and monitoring.
+
+The lesson that stayed with me is this: systems will fail. The difference is whether we discover weaknesses during controlled experiments or let customers discover them in production.
+
+## Conclusion
+
+The AWS article presents a strong approach for combining AWS Resilience Hub, AWS Fault Injection Service, Amazon Bedrock AgentCore, AWS Systems Manager, AWS Config, and CloudWatch into a continuous resilience testing loop.
+
+The value is not only automated chaos experiment generation. The bigger value is turning resilience into a living process: discover dependencies, generate contextual tests, run experiments safely, analyze gaps, automate remediation, and validate again through CI/CD.
+
+If I were applying this in a real environment, I would start with a non-critical application, define clear RTO and RPO targets, enable AWS Config, run an AWS Resilience Hub assessment, and only then introduce the AI agent and automated experiments. Once the team trusts the guardrails and review process, the framework can expand to more important workloads.

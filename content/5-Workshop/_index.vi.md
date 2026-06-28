@@ -1,33 +1,30 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-04-20
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# DocuFlow AI - Xây dựng nền tảng xử lý invoice & receipt serverless
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Workshop này xây dựng **DocuFlow AI**, một nền tảng serverless cho phép người dùng đã đăng nhập upload invoice và receipt, sau đó tự động trích xuất dữ liệu tài chính bằng Amazon Textract và Amazon Bedrock. Kết quả được lưu lại, theo dõi theo status và hiển thị trên dashboard web kèm review loop thủ công cho tài liệu có confidence thấp.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Bạn sẽ xây hệ thống theo từng bước, mỗi module một phần. Mỗi module thêm resource vào một AWS SAM stack duy nhất deploy ở `ap-southeast-1` (Singapore), nên nền tảng lớn dần từ một template rỗng thành một pipeline event-driven hoàn chỉnh.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+#### Kiến trúc
+
+Nền tảng dùng kiến trúc serverless, event-driven: Amazon Cognito cho auth, Amazon S3 + CloudFront cho frontend, API Gateway và Lambda cho API, EventBridge và SQS cho ingestion, Step Functions để điều phối, Textract và Bedrock cho AI extraction, DynamoDB cho metadata, và CloudWatch cùng SNS cho observability.
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+1. [Tổng quan Workshop](5.1-Workshop-overview/)
+2. [Chuẩn bị](5.2-Prerequisite/)
+3. [Frontend, Auth và Upload](5.3-Frontend-Auth-Upload/)
+4. [Storage, Ingestion và Workflow](5.4-Storage-Ingestion-Workflow/)
+5. [AI Extraction với Bedrock](5.5-AI-Extraction-Bedrock/)
+6. [Data, Result và Review](5.6-Data-Result-Review/)
+7. [Observability và Security](5.7-Observability-Security/)
+8. [Cleanup](5.8-Cleanup/)

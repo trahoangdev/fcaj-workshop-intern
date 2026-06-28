@@ -32,7 +32,7 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 9:** [Building the DocuFlow AI foundation: Cognito, S3, DynamoDB, upload API, and frontend hosting](1.9-week9/)
 
-**Week 10:** [Doing task L...](1.10-week10/)
+**Week 10:** [DocuFlow AI Architecture and Documentation Revision](1.10-week10/)
 
 **Week 11:** [Doing task M...](1.11-week11/)
 

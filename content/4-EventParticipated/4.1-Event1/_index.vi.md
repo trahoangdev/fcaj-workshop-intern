@@ -1,5 +1,5 @@
 ---
-title: "Community Day FCAJ HCM"
+title: "FCAJ Community Day"
 date: 2024-01-01
 weight: 1
 chapter: false
@@ -10,7 +10,7 @@ pre: " <b> 4.1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}-->
 
-# Bài thu hoạch “Community Day FCAJ HCM”
+# Bài thu hoạch “FCAJ Community Day”
 
 ### Mục đích của sự kiện
 

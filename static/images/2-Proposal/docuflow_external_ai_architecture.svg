@@ -1,0 +1,80 @@
+<rect class="node aws" x="720" y="205" width="175" height="70"/>
+  <text class="text" x="750" y="232">API Gateway</text>
+  <text class="tiny" x="743" y="254">Protected REST API</text>
+  <rect class="node aws" x="950" y="205" width="190" height="70"/>
+  <text class="text" x="986" y="232">Lambda</text>
+  <text class="tiny" x="978" y="254">Generate upload URL</text>
+  <rect class="node aws" x="1200" y="205" width="190" height="70"/>
+  <text class="text" x="1262" y="232">S3 Raw</text>
+  <text class="tiny" x="1234" y="254">Private uploads</text>
+  <path class="arrow" d="M218 240 H272"/>
+  <path class="arrow" d="M452 240 H506"/>
+  <path class="arrow" d="M666 240 H720"/>
+  <path class="arrow" d="M895 240 H950"/>
+  <path class="arrow" d="M1140 240 H1200"/>
+  <rect class="node aws" x="1200" y="340" width="190" height="70"/>
+  <text class="text" x="1240" y="367">EventBridge</text>
+  <text class="tiny" x="1232" y="389">Object created event</text>
+  <rect class="node aws" x="950" y="340" width="190" height="70"/>
+  <text class="text" x="1026" y="367">SQS</text>
+  <text class="tiny" x="982" y="389">Queue + DLQ</text>
+  <rect class="node aws" x="720" y="340" width="175" height="70"/>
+  <text class="text" x="760" y="367">Lambda</text>
+  <text class="tiny" x="750" y="389">Start processing</text>
+  <path class="arrow" d="M1295 275 V340"/>
+  <path class="arrow" d="M1200 375 H1140"/>
+  <path class="arrow" d="M950 375 H895"/>
+  <rect class="zone" x="145" y="475" width="1110" height="210"/>
+  <text class="section" x="170" y="508">Step Functions Standard Workflow</text>
+  <rect class="node aws" x="175" y="548" width="130" height="70"/>
+  <text class="text" x="218" y="574">Validate</text>
+  <text class="tiny" x="194" y="596">type + size</text>
+  <rect class="node aws" x="345" y="548" width="145" height="70"/>
+  <text class="text" x="390" y="574">Textract</text>
+  <text class="tiny" x="374" y="596">AnalyzeExpense</text>
+  <rect class="node ai" x="530" y="548" width="185" height="70"/>
+  <text class="text" x="560" y="574">External AI</text>
+  <text class="tiny" x="550" y="596">Normalize + classify</text>
+  <rect class="node aws" x="755" y="548" width="145" height="70"/>
+  <text class="text" x="792" y="574">Validate</text>
+  <text class="tiny" x="785" y="596">JSON schema</text>
+  <rect class="node aws" x="940" y="548" width="145" height="70"/>
+  <text class="text" x="980" y="574">Save</text>
+  <text class="tiny" x="962" y="596">metadata + JSON</text>
+  <rect class="node bad" x="1085" y="620" width="140" height="50"/>
+  <text class="small" x="1100" y="650">Review / Failed</text>
+  <path class="arrow" d="M720 410 C690 470, 240 470, 240 548"/>
+  <path class="arrow" d="M305 583 H345"/>
+  <path class="arrow" d="M490 583 H530"/>
+  <path class="arrow" d="M715 583 H755"/>
+  <path class="arrow" d="M900 583 H940"/>
+  <path class="warn" d="M1012 618 C1012 648, 1040 648, 1085 648"/>
+  <rect class="node sec" x="530" y="700" width="185" height="58"/>
+  <text class="small" x="552" y="724">Secrets Manager</text>
+  <text class="tiny" x="562" y="744">or SSM Parameter Store</text>
+  <path class="dashed" d="M622 700 V618"/>
+  <rect class="node aws" x="940" y="710" width="145" height="58"/>
+  <text class="small" x="982" y="734">DynamoDB</text>
+  <text class="tiny" x="960" y="752">status + metadata</text>
+  <rect class="node aws" x="1120" y="710" width="145" height="58"/>
+  <text class="small" x="1156" y="734">S3 Processed</text>
+  <text class="tiny" x="1140" y="752">normalized JSON</text>
+  <path class="arrow" d="M1012 618 V710"/>
+  <path class="arrow" d="M1085 583 C1130 583, 1192 645, 1192 710"/>
+  <rect class="node obs" x="1335" y="475" width="170" height="70"/>
+  <text class="text" x="1376" y="502">CloudWatch</text>
+  <text class="tiny" x="1360" y="524">logs + metrics + alarms</text>
+  <rect class="node obs" x="1335" y="600" width="170" height="70"/>
+  <text class="text" x="1398" y="627">SNS/SES</text>
+  <text class="tiny" x="1368" y="649">failed / low confidence</text>
+  <path class="dashed" d="M1225 648 C1280 648, 1292 510, 1335 510"/>
+  <path class="warn" d="M1225 648 H1335"/>
+  <rect class="optional" x="80" y="820" width="700" height="100"/>
+  <text class="section" x="110" y="852">Optional analytics</text>
+  <text class="small" x="110" y="880">S3 Processed JSON -&gt; Glue Crawler -&gt; Athena -&gt; QuickSight dashboard</text>
+  <text class="tiny" x="110" y="904">Enable only after the core MVP is stable and the budget is updated.</text>
+  <rect class="optional" x="840" y="820" width="680" height="100"/>
+  <text class="section" x="870" y="852">Security rule</text>
+  <text class="small" x="870" y="880">External AI payload = Textract summary fields + line items + short text preview.</text>
+  <text class="tiny" x="870" y="904">Do not send raw PDF/image files, API keys, AWS credentials, or unrelated sensitive fields.</text>
+</svg>
