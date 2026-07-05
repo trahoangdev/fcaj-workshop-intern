@@ -6,14 +6,10 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+During my 12-week internship at **Amazon Web Services Viet Nam Company Limited**, from **17/04/2026** to **10/07/2026**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a practical learning and working environment.  
+As part of the **First Cloud AI Journey** program, I practiced AWS Cloud concepts, studied technical documentation, participated in community activities, maintained weekly worklogs, and developed the **DocuFlow AI - an AWS serverless platform for invoice and receipt processing** project. Through this experience, I improved my ability to use AWS services such as IAM, VPC, S3, EC2, Lambda, DynamoDB, API Gateway, Step Functions, Textract, and CloudWatch. I also strengthened my skills in architecture analysis, proposal writing, workshop development, cost management, and technical presentation.
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
-
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+In terms of work ethic, I always strived to complete assigned tasks, follow the program's guidance, proactively read documentation, practice through workshops, and receive feedback to improve the quality of both my report and project.
 
 To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
 
@@ -23,8 +19,8 @@ To objectively reflect on my internship period, I would like to evaluate myself 
 | 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
 | 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
 | 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
+| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐   | ✅    | ☐       |
+| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ✅    | ☐    | ☐       |
 | 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
 | 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
 | 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
@@ -34,6 +30,7 @@ To objectively reflect on my internship period, I would like to evaluate myself 
 
 ### Needs Improvement
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+* Strengthen discipline in time management, progress updates, and completing planned tasks on schedule.
+* Improve problem analysis before implementing solutions, especially for topics related to cloud architecture, security, and cost.
+* Further develop communication skills, technical presentation skills, and feedback handling during teamwork.
+* Continue learning more deeply about AWS serverless, cloud security, observability, and post-deployment operations.
