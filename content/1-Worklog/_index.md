@@ -34,6 +34,6 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 10:** [DocuFlow AI Architecture and Documentation Revision](1.10-week10/)
 
-**Week 11:** [Doing task M...](1.11-week11/)
+**Week 11:** [Admin-Approved Architecture and DocuFlow AI Delivery Ownership](1.11-week11/)
 
 **Week 12:** [Doing task N...](1.12-week12/)
