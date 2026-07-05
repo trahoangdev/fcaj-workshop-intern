@@ -37,7 +37,7 @@ Vì vậy, recovery plan cần trả lời được các câu hỏi:
 
 Bài AWS đưa ra cách chia môi trường thành ba nhóm tài khoản chính trong AWS Organizations.
 
-![Isolated Recovery Environment](/images/3-BlogsTranslated/Blog1/IsolatedRecoveryEnvironment(IRE).png)
+![Isolated Recovery Environment](../../../images/3-BlogsTranslated/Blog1/IsolatedRecoveryEnvironment(IRE).png)
 
 *Nguồn: AWS Architecture Blog - Cyber resilience on AWS*
 
@@ -75,7 +75,7 @@ Cách thiết kế này giúp giới hạn rủi ro: nếu một backup được
 
 Bài gốc không chỉ đưa ra các thành phần kiến trúc, mà còn mô tả cách vận hành recovery theo từng giai đoạn. Mình tóm tắt lại thành 5 bước chính:
 
-![Recovery workflow](/images/3-BlogsTranslated/Blog1/Recovery_workflow.jpg)
+![Recovery workflow](../../../images/3-BlogsTranslated/Blog1/Recovery_workflow.jpg)
 
 *Nguồn: AWS Architecture Blog - Cyber resilience on AWS*
 
@@ -104,7 +104,7 @@ Các bước validation nên chạy trong IRE. Chỉ khi recovery point vượt 
 
 Trong sự cố vận hành thông thường, backup mới nhất thường là lựa chọn tốt. Nhưng trong cyber event, backup mới nhất chưa chắc an toàn, vì attacker có thể đã tồn tại trong hệ thống trước thời điểm bị phát hiện.
 
-![Selecting a safe recovery point](/images/3-BlogsTranslated/Blog1/Selecting_a_safe_recovery_point.png)
+![Selecting a safe recovery point](../../../images/3-BlogsTranslated/Blog1/Selecting_a_safe_recovery_point.png)
 
 *Nguồn: AWS Architecture Blog - Cyber resilience on AWS*
 

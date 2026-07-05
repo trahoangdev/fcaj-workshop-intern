@@ -37,7 +37,7 @@ A cyber recovery plan should answer several practical questions:
 
 The AWS blog describes a three-account pattern inside AWS Organizations.
 
-![Isolated Recovery Environment](/images/3-BlogsTranslated/Blog1/IsolatedRecoveryEnvironment(IRE).png)
+![Isolated Recovery Environment](../../images/3-BlogsTranslated/Blog1/IsolatedRecoveryEnvironment(IRE).png)
 
 *Source: AWS Architecture Blog - Cyber resilience on AWS*
 
@@ -75,7 +75,7 @@ This design limits blast radius. If a restored backup is still unsafe, the issue
 
 The original article does not only describe architecture components. It also shows how recovery should be operated in stages. I summarize the workflow into five main steps:
 
-![Recovery workflow](/images/3-BlogsTranslated/Blog1/Recovery_workflow.jpg)
+![Recovery workflow](../../images/3-BlogsTranslated/Blog1/Recovery_workflow.jpg)
 
 *Source: AWS Architecture Blog - Cyber resilience on AWS*
 
@@ -104,7 +104,7 @@ These checks should run inside the IRE. A recovery point should only be approved
 
 For normal operational recovery, the most recent backup is often the best option. For cyber events, the most recent backup might not be safe because it may have been created after the attacker entered the environment.
 
-![Selecting a safe recovery point](/images/3-BlogsTranslated/Blog1/Selecting_a_safe_recovery_point.png)
+![Selecting a safe recovery point](../../images/3-BlogsTranslated/Blog1/Selecting_a_safe_recovery_point.png)
 
 *Source: AWS Architecture Blog - Cyber resilience on AWS*
 

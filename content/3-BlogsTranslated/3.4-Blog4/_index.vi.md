@@ -35,7 +35,7 @@ Với các use case đơn giản, `ListUsers` có thể đủ dùng. Nhưng tron
 
 ## Kiến trúc giải pháp
 
-![Kiến trúc tầng tìm kiếm người dùng trên Amazon Cognito](/fcaj-workshop-intern/images/3-BlogsTranslated/Blog4/architecture.png)
+![Kiến trúc tầng tìm kiếm người dùng trên Amazon Cognito](../../../images/3-BlogsTranslated/Blog4/architecture.png)
 
 *Nguồn: AWS Architecture Blog - Building a scalable user search layer on top of Amazon Cognito*
 

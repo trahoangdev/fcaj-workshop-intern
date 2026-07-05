@@ -47,7 +47,7 @@ The important point is that ML is not only used for classification. It also stan
 
 ## Solution Architecture
 
-![LITHOLENS architecture on AWS](/fcaj-workshop-intern/images/3-BlogsTranslated/Blog6/architecture.png)
+![LITHOLENS architecture on AWS](../../images/3-BlogsTranslated/Blog6/architecture.png)
 
 *Source: AWS Architecture Blog - How ALS GeoAnalytics LITHOLENS revolutionizes core logging through machine learning with Amazon EKS*
 

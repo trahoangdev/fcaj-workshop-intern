@@ -47,7 +47,7 @@ Bài viết mô tả nhiều thành phần ML trong nền tảng LITHOLENS™:
 
 ## Kiến trúc giải pháp
 
-![Kiến trúc LITHOLENS trên AWS](/fcaj-workshop-intern/images/3-BlogsTranslated/Blog6/architecture.png)
+![Kiến trúc LITHOLENS trên AWS](../../../images/3-BlogsTranslated/Blog6/architecture.png)
 
 *Nguồn: AWS Architecture Blog - How ALS GeoAnalytics LITHOLENS revolutionizes core logging through machine learning with Amazon EKS*
 

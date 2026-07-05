@@ -35,7 +35,7 @@ If workflow state is already managed by Step Functions, built-in retry and backo
 
 ## Solution Architecture
 
-![Custom retry architecture with EventBridge Scheduler](/fcaj-workshop-intern/images/3-BlogsTranslated/Blog5/architecture.png)
+![Custom retry architecture with EventBridge Scheduler](../../images/3-BlogsTranslated/Blog5/architecture.png)
 
 *Source: AWS Architecture Blog - Create a serverless custom retry mechanism for stateless queue consumers*
 

@@ -35,7 +35,7 @@ The difficult part is keeping the search index synchronized with Cognito. Schedu
 
 ## Solution Architecture
 
-![Scalable user search layer on Amazon Cognito](/fcaj-workshop-intern/images/3-BlogsTranslated/Blog4/architecture.png)
+![Scalable user search layer on Amazon Cognito](../../images/3-BlogsTranslated/Blog4/architecture.png)
 
 *Source: AWS Architecture Blog - Building a scalable user search layer on top of Amazon Cognito*
 
