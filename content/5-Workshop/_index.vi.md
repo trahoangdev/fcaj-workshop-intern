@@ -1,30 +1,28 @@
 ---
 title: "Workshop"
-date: 2026-04-20
+date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# DocuFlow AI - Xây dựng nền tảng xử lý invoice & receipt serverless
+# Tài liệu thực hành - DocuFlow AI
 
 #### Tổng quan
 
-Workshop này xây dựng **DocuFlow AI**, một nền tảng serverless cho phép người dùng đã đăng nhập upload invoice và receipt, sau đó tự động trích xuất dữ liệu tài chính bằng Amazon Textract và Amazon Bedrock. Kết quả được lưu lại, theo dõi theo status và hiển thị trên dashboard web kèm review loop thủ công cho tài liệu có confidence thấp.
+Trong bài lab này, chúng ta sẽ cùng nhau xây dựng giải pháp **DocuFlow AI** – một hệ thống tự động hóa bóc tách hóa đơn và chứng từ thông minh trên nền tảng AWS. 
 
-Bạn sẽ xây hệ thống theo từng bước, mỗi module một phần. Mỗi module thêm resource vào một AWS SAM stack duy nhất deploy ở `ap-southeast-1` (Singapore), nên nền tảng lớn dần từ một template rỗng thành một pipeline event-driven hoàn chỉnh.
+Hệ thống sử dụng các dịch vụ Serverless như **Amazon S3**, **Amazon DynamoDB**, **AWS Lambda**, **Amazon SQS**, **Amazon EventBridge**, **AWS Step Functions**, kết hợp với **Amazon Textract** và mô hình AI bên ngoài để xây dựng một luồng xử lý dữ liệu hoàn chỉnh, bảo mật và có tính giám sát cao.
 
-#### Kiến trúc
+#### Nội dung thực hành
 
-Nền tảng dùng kiến trúc serverless, event-driven: Amazon Cognito cho auth, Amazon S3 + CloudFront cho frontend, API Gateway và Lambda cho API, EventBridge và SQS cho ingestion, Step Functions để điều phối, Textract và Bedrock cho AI extraction, DynamoDB cho metadata, và CloudWatch cùng SNS cho observability.
-
-#### Nội dung
-
-1. [Tổng quan Workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequisite/)
-3. [Frontend, Auth và Upload](5.3-Frontend-Auth-Upload/)
-4. [Storage, Ingestion và Workflow](5.4-Storage-Ingestion-Workflow/)
-5. [AI Extraction với Bedrock](5.5-AI-Extraction-Bedrock/)
-6. [Data, Result và Review](5.6-Data-Result-Review/)
-7. [Observability và Security](5.7-Observability-Security/)
-8. [Cleanup](5.8-Cleanup/)
+1. [Giới thiệu tổng quan](5.1-introduction/)
+2. [Chuẩn bị môi trường](5.2-prerequisite/)
+3. [Xây dựng nền tảng dự án](5.3-prepare-project-foundation/)
+4. [Thiết lập & Chạy Frontend](5.4-setup-and-run-frontend/)
+5. [Dựng Workflow xử lý AI](5.5-ai-processing-workflow/)
+6. [Dựng luồng thu thập tài liệu bất đồng bộ](5.6-document-ingestion-pipeline/)
+7. [Lưu trữ kết quả & Xây dựng luồng phê duyệt](5.7-store-result-review-flow/)
+8. [Giám sát, Cảnh báo & Quản trị hệ thống](5.8-observability-alerting-governance/)
+9. [Kiểm thử tích hợp End-to-End](5.9-end-to-end-testing/)
+10. [Dọn dẹp tài nguyên](5.10-clean-up/)
