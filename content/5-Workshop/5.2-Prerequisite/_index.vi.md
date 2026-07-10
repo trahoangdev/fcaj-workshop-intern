@@ -6,7 +6,6 @@ chapter: false
 pre: " <b> 5.2. </b> "
 ---
 
-# Chuẩn bị môi trường
 
 ### 1. Mục tiêu (Goal)
 Đảm bảo người học truy cập thành công vào AWS Management Console, cài đặt các công cụ cần thiết cho Frontend và chuẩn bị tài liệu mẫu để kiểm thử trước khi tiến hành thực hiện các bài lab.

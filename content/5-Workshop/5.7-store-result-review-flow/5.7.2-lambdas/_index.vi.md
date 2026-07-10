@@ -1,13 +1,10 @@
 ---
-title: "5.7.2 Các hàm Lambda quản lý dữ liệu"
+title: "Các hàm Lambda quản lý dữ liệu"
 date: 2024-01-01
 weight: 2
 chapter: false
 pre: " <b> 5.7.2. </b> "
 ---
-
-# TẠO CÁC HÀM XỬ LÝ (AWS LAMBDA)
-
 AWS Lambda là gì? Lambda là dịch vụ giúp bạn chạy code (mã lập trình) mà không cần phải đi thuê nguyên một máy chủ (server) rườm rà. Hệ thống module dữ liệu của chúng ta cần 4 hàm Lambda nhỏ để nhận lệnh từ người dùng và đi đọc/ghi dữ liệu vào S3 và DynamoDB.
 
 ---

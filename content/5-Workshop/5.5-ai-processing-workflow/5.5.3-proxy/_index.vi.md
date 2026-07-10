@@ -1,13 +1,10 @@
 ---
-title: "5.5.3 AI Proxy Lambda"
+title: "AI Proxy Lambda"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.5.3. </b> "
 ---
-
-# Hàm AI Proxy Lambda (`docuflow-dev-ai-proxy-lambda`)
-
 Hàm này chịu trách nhiệm lấy API Key bảo mật từ AWS Secrets Manager, gửi yêu cầu tới mô hình ngôn ngữ lớn (OpenAI GPT-4o) để chuẩn hóa cấu trúc dữ liệu JSON từ các trường thô trích xuất bởi Textract, đồng thời bảo toàn điểm tin cậy (Confidence score).
 
 ---

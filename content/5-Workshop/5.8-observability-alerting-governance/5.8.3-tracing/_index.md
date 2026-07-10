@@ -1,13 +1,10 @@
 ---
-title: "5.8.3 Distributed Tracing"
+title: "Distributed Tracing"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.8.3. </b> "
 ---
-
-# Enable Distributed Tracing with AWS X-Ray
-
 To monitor detailed performance and draw the path of requests (Service Map) throughout the system—from the API Gateway, through the Step Functions state machine, down to each executing Lambda function—we need to enable AWS X-Ray.
 
 ---

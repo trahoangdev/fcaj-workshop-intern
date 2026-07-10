@@ -5,9 +5,6 @@ weight: 7
 chapter: false
 pre: " <b> 5.7. </b> "
 ---
-
-# Lưu trữ kết quả & Xây dựng luồng phê duyệt
-
 ### 1. Mục tiêu (Goal)
 Thiết lập cơ chế lưu trữ bền vững (Data Persistence) theo mô hình "Offloading" giữa DynamoDB và S3, triển khai ba Data Lambda chính thức (Get Document, List Documents và Review Update) cho luồng phê duyệt thủ công. Delete Document, Dashboard và Process Control được tách riêng thành các Lambda mở rộng, chỉ triển khai khi sử dụng các tính năng làm thêm của dự án.
 

@@ -1,13 +1,10 @@
 ---
-title: "5.5.4 Confidence Status Lambda"
+title: "Confidence Status Lambda"
 date: 2024-01-01
 weight: 4
 chapter: false
 pre: " <b> 5.5.4. </b> "
 ---
-
-# Hàm Confidence & Status Lambda (`docuflow-dev-ai-confidence-status-lambda`)
-
 Hàm này chịu trách nhiệm kiểm tra tính toàn vẹn dữ liệu (Schema completeness), đánh giá điểm tin cậy bóc tách (Confidence Score), và đưa ra quyết định trạng thái cuối cùng của tài liệu (`EXTRACTED` hoặc `REVIEW_REQUIRED`).
 
 ---

@@ -1,13 +1,10 @@
 ---
-title: "5.7.2 Data Management Lambdas"
+title: "Data Management Lambdas"
 date: 2024-01-01
 weight: 2
 chapter: false
 pre: " <b> 5.7.2. </b> "
 ---
-
-# CREATING PROCESSING FUNCTIONS (AWS LAMBDA)
-
 What is AWS Lambda? Lambda is a service that lets you run code without provisioning or managing a traditional server. Our data module system requires four small Lambda functions to receive commands from users and read/write data to S3 and DynamoDB.
 
 ---

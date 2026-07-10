@@ -1,13 +1,10 @@
 ---
-title: "5.7.1 Persistence & Offloading Design"
+title: "Persistence & Offloading Design"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.7.1. </b> "
 ---
-
-# Data Model and Hybrid Offloading Architecture
-
 The DocuFlow AI persistence layout combines a **Single-Table Design** pattern on Amazon DynamoDB with S3 **Offloading** (separating large attributes) to optimize retrieval performance, control database costs, and bypass physical NoSQL record size boundaries.
 
 ---

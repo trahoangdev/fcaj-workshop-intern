@@ -1,13 +1,10 @@
 ---
-title: "5.5.5 Step Functions Workflow"
+title: "Step Functions Workflow"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5.5.5. </b> "
 ---
-
-# Deploy AWS Step Functions State Machine
-
 We will use AWS Step Functions to orchestrate the four core AI-processing Lambdas, persist results, and invoke Notification Trigger Lambda for review and failure alerts.
 
 ---

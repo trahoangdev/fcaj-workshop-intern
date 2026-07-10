@@ -1,13 +1,10 @@
 ---
-title: "5.7.3 Cấu hình API Gateway"
+title: "Cấu hình API Gateway"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.7.3. </b> "
 ---
-
-# Cấu hình API Gateway & Tích hợp Authorizer
-
 Trong phần này, chúng ta sẽ cấu hình Amazon API Gateway để làm cổng giao tiếp (API Endpoint) cho tất cả các Lambda functions đã tạo, đồng thời tích hợp xác thực người dùng bằng Cognito Authorizer.
 
 ---

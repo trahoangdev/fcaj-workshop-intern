@@ -1,13 +1,10 @@
 ---
-title: "5.6.5 Initialize Job Starter Lambda Function"
+title: "Initialize Job Starter Lambda Function"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5.6.5. </b> "
 ---
-
-# Initialize Job Starter Lambda Function
-
 #### Lab 8: Initialize Job Starter Lambda Function (`docuflow-dev-ingestion-job-starter-lambda`)
 1. Access **Lambda** -> click **Create function** -> **Author from scratch**.
 2. **Function name**: `docuflow-dev-ingestion-job-starter-lambda`.

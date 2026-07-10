@@ -1,13 +1,10 @@
 ---
-title: "5.8.4 Governance & Audit Logs"
+title: "Governance & Audit Logs"
 date: 2024-01-01
 weight: 4
 chapter: false
 pre: " <b> 5.8.4. </b> "
 ---
-
-# Kiểm toán tài khoản với AWS CloudTrail
-
 Để ghi lại lịch sử hoạt động, kiểm vết API và theo dõi mọi thao tác thay đổi cấu hình trên tài khoản AWS của dự án (Audit Logging), chúng ta sẽ thiết lập đường giám sát với AWS CloudTrail.
 
 ---

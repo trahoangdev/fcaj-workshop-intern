@@ -6,7 +6,6 @@ chapter: false
 pre: " <b> 5.2. </b> "
 ---
 
-# Prerequisite
 
 ### 1. Goal
 Ensure readers successfully log in to the AWS Management Console, set up local tools for the Frontend, and prepare sample files to test all execution paths before starting the hands-on labs.

@@ -22,7 +22,7 @@ pre: " <b> 4. </b> "
 > * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.-->
 
 
-Trong quá trình thực tập, em đã tham gia 5 events. Mỗi event là một trải nghiệm đáng nhớ, mang đến những kiến thức mới, bổ ích, cùng những món quà và khoảnh khắc rất tuyệt vời.
+Trong quá trình thực tập, em đã tham gia 6 events. Mỗi event là một trải nghiệm đáng nhớ, mang đến những kiến thức mới, bổ ích, cùng những món quà và khoảnh khắc rất tuyệt vời.
 
 ### [Event 1](4.1-Event1/)
 &emsp;**Tên sự kiện:** FCAJ Community Day
@@ -74,6 +74,17 @@ Trong quá trình thực tập, em đã tham gia 5 events. Mỗi event là một
 &emsp;**Thời gian:** 09:00 ngày 27/06/2026
 
 &emsp;**Địa điểm:** Tòa nhà Bitexco Financial Tower, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+
+&emsp;**Vai trò trong sự kiện:** Người tham dự
+
+
+
+### [Event 6](4.6-Event6/)
+&emsp;**Tên sự kiện:** Agentic AI Build Week Day 2
+
+&emsp;**Thời gian:** 08:45 - 21:00 ngày 09/07/2026
+
+&emsp;**Địa điểm:** AWS HCMC Office / Bitexco Financial Tower, thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự
 

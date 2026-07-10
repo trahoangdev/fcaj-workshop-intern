@@ -1,13 +1,10 @@
 ---
-title: "5.7.1 Mô hình dữ liệu & Offloading"
+title: "Mô hình dữ liệu & Offloading"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.7.1. </b> "
 ---
-
-# Mô hình dữ liệu (Data Model) & Kiến trúc Offloading
-
 Hệ thống lưu trữ và quản lý kết quả bóc tách chứng từ của DocuFlow AI áp dụng nguyên lý **Single-Table Design** trên Amazon DynamoDB kết hợp với mô hình **Offloading** (phân tách dữ liệu lớn) lưu trên S3 để tối ưu hóa hiệu năng, chi phí và vượt qua các giới hạn vật lý của cơ sở dữ liệu NoSQL.
 
 ---

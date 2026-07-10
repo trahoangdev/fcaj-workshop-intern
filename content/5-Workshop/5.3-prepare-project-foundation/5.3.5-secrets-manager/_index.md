@@ -1,13 +1,10 @@
 ---
-title: "5.3.5 Configure Secrets Manager"
+title: "Configure Secrets Manager"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5.3.5. </b> "
 ---
-
-# Store Secure API Key with Secrets Manager
-
 We will securely store and encrypt the access key (API Key) of the External AI using the AWS Secrets Manager service. This secret key will be encrypted with the project's KMS Key, and only the AI Proxy Lambda function will have permission to retrieve its value.
 
 ### Prepare the External AI API Key

@@ -5,9 +5,6 @@ weight: 5
 chapter: false
 pre: " <b> 5.5. </b> "
 ---
-
-# Dựng Workflow xử lý AI
-
 ### 1. Mục tiêu (Goal)
 Thiết lập luồng xử lý AI bất đồng bộ sử dụng **AWS Step Functions** để điều phối tuần tự 4 hàm Lambda:
 1. **Kiểm tra tệp tin hợp lệ (Validate)**
