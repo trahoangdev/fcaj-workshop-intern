@@ -1,13 +1,10 @@
 ---
-title: "5.5.5 Step Functions Workflow"
+title: "Step Functions Workflow"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5.5.5. </b> "
 ---
-
-# Thiết lập AWS Step Functions State Machine
-
 Chúng ta sẽ sử dụng AWS Step Functions để điều phối bốn Lambda xử lý AI cốt lõi, lưu kết quả và gọi Notification Trigger Lambda cho nhánh cần review hoặc thất bại.
 
 ---

@@ -1,13 +1,10 @@
 ---
-title: "5.5.4 Confidence Status Lambda"
+title: "Confidence Status Lambda"
 date: 2024-01-01
 weight: 4
 chapter: false
 pre: " <b> 5.5.4. </b> "
 ---
-
-# Confidence & Status Lambda Function (`docuflow-dev-ai-confidence-status-lambda`)
-
 This function is responsible for checking data integrity (Schema completeness), evaluating the extraction confidence (Confidence Score), and determining the final status of the document (`EXTRACTED` or `REVIEW_REQUIRED`).
 
 ---

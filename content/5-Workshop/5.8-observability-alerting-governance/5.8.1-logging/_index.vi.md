@@ -1,13 +1,10 @@
 ---
-title: "5.8.1 CloudWatch Logs & Filters"
+title: "CloudWatch Logs & Filters"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.8.1. </b> "
 ---
-
-# Cấu hình CloudWatch Logs và Custom Metrics
-
 **PHẦN 1: THIẾT LẬP THỜI GIAN LƯU TRỮ LOG (RETENTION SETTING)**
 
 - Tạo CloudWatch log groups, metric filters/custom metrics nếu cần.

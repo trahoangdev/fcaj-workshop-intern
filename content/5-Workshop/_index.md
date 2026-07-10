@@ -5,8 +5,6 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-# Practical Guide - DocuFlow AI
-
 #### Overview
 
 In this workshop, we will build the **DocuFlow AI** solution – an intelligent invoice and document processing automation system on AWS.

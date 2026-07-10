@@ -1,13 +1,10 @@
 ---
-title: "5.8.3 Tracing AWS X-Ray"
+title: "Tracing AWS X-Ray"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.8.3. </b> "
 ---
-
-# Kích hoạt Distributed Tracing với AWS X-Ray
-
 Để theo dõi chi tiết hiệu năng và vẽ sơ đồ đường đi của request (Service Map) xuyên suốt từ cổng vào API Gateway, đi qua máy trạng thái Step Functions, đến từng hàm Lambda thực thi cụ thể, chúng ta cần bật AWS X-Ray.
 
 ---

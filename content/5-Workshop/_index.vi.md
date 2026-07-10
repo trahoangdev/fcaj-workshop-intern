@@ -5,9 +5,6 @@ weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
-
-# Tài liệu thực hành - DocuFlow AI
-
 #### Tổng quan
 
 Trong bài lab này, chúng ta sẽ cùng nhau xây dựng giải pháp **DocuFlow AI** – một hệ thống tự động hóa bóc tách hóa đơn và chứng từ thông minh trên nền tảng AWS. 

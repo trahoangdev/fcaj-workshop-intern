@@ -5,9 +5,6 @@ weight: 4
 chapter: false
 pre: " <b> 5.4. </b> "
 ---
-
-# Thiết lập & Chạy Frontend
-
 ### 1. Mục tiêu (Goal)
 Tải mã nguồn Frontend (React/Vite), cấu hình biến môi trường kết nối với các tài nguyên AWS đã tạo ở bước 3, khởi chạy ứng dụng local và xác minh các luồng đăng nhập (Cognito), sinh Presigned URL để tải hóa đơn gốc lên S3 Raw Bucket.
 

@@ -5,9 +5,6 @@ weight: 1
 chapter: false
 pre: " <b> 5.1. </b> "
 ---
-
-# EVENT SUMMARY REPORT: INTRODUCTION TO DOCUFLOW AI
-
 ### 1. Use Case & Solution Overview
 In the era of digital transformation, manually entering data from invoices and receipts remains a significant bottleneck (pain point) for finance and SME operation teams. Manual transcription from scanned images or PDF files into spreadsheets or ERP systems is time-consuming, error-prone (resulting in typos in vendor names, invoice dates, amounts, taxes, or currencies), and carries security risks such as the exposure of sensitive financial data or external API keys.
 
@@ -16,13 +13,9 @@ In the era of digital transformation, manually entering data from invoices and r
 ### 2. Approved Architecture Diagram
 The approved architecture consists of several core blocks: Edge/Frontend, Authentication & API, Document Ingestion, AI Processing Pipeline, Data Persistence, Observability, Alerting, and Cross-cutting Security & Governance.
 
-**Figure 1 - DocuFlow AI high-level architecture**
+**Figure 1 - DocuFlow AI architecture and processing flow**
 
-![DocuFlow AI high-level architecture](/images/5-Workshop/architecture/DocuFlowAI-architecture.png)
-
-**Figure 2 - DocuFlow AI detailed architecture and processing flow**
-
-![DocuFlow AI detailed architecture and processing flow](/images/5-Workshop/architecture/DocuFlowAI-architecture-2.png)
+![DocuFlow AI architecture and processing flow](/images/5-Workshop/architecture/DocuFlowAI-architecture-2.png)
 
 The high-level processing path is:
 
