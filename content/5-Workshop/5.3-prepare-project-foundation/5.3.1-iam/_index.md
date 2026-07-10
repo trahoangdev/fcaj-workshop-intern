@@ -1,12 +1,11 @@
 ---
-title: "5.3.1 Configure IAM Groups and Roles"
+title: "Configure IAM Groups and Roles"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.3.1. </b> "
 ---
 
-# Configure IAM Groups, Policies and Roles for DocuFlow AI System
 
 To adhere to the Principle of Least Privilege, we will create IAM Groups for workshop operators, then design and create specialized IAM Policies and Roles for each Lambda and Step Functions service within the system.
 

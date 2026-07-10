@@ -1,13 +1,10 @@
 ---
-title: "5.3.3 Configure S3 Buckets"
+title: "Configure S3 Buckets"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.3.3. </b> "
 ---
-
-# Configure Amazon S3 Buckets
-
 ## PART 1: CREATE AMAZON S3 RAW BUCKET
 
 1. Go to the **S3** service → **Buckets** → **Create bucket**.

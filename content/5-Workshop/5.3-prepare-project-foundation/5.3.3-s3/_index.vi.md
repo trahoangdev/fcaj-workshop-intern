@@ -1,13 +1,10 @@
 ---
-title: "5.3.3 Cấu hình S3 Buckets"
+title: "Cấu hình S3 Buckets"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.3.3. </b> "
 ---
-
-# Cấu hình các Amazon S3 Buckets
-
 ## PHẦN 1: TẠO AMAZON S3 RAW BUCKET
 
 1. Vào dịch vụ **S3** → **Buckets** → **Create bucket**.

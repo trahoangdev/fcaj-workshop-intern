@@ -1,13 +1,10 @@
 ---
-title: "5.7.3 API Gateway Configuration"
+title: "API Gateway Configuration"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.7.3. </b> "
 ---
-
-# API Gateway & Authorizer Integration
-
 In this section, we will configure Amazon API Gateway to act as the primary endpoint for all deployed Lambda functions. Additionally, we will secure the API by integrating a Cognito Authorizer.
 
 ---

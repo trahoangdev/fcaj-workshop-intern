@@ -1,13 +1,10 @@
 ---
-title: "5.5.2 Textract Lambda"
+title: "Textract Lambda"
 date: 2024-01-01
 weight: 2
 chapter: false
 pre: " <b> 5.5.2. </b> "
 ---
-
-# Hàm Textract Lambda (`docuflow-dev-ai-textract-lambda`)
-
 Hàm này nhận đầu vào từ Step Functions, gọi API `AnalyzeExpense` của Amazon Textract để bóc tách thông tin thô, sau đó sử dụng bộ từ điển ánh xạ để định dạng lại dữ liệu thô đưa sang bước chuẩn hóa AI.
 
 ---

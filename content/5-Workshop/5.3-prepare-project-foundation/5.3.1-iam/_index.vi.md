@@ -1,12 +1,11 @@
 ---
-title: "5.3.1 Cấu hình IAM Groups và Roles"
+title: "Cấu hình IAM Groups và Roles"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.3.1. </b> "
 ---
 
-# Cấu hình IAM Groups, Policies và Roles cho hệ thống DocuFlow AI
 
 Để tuân thủ nguyên tắc phân quyền tối thiểu (Least Privilege), chúng ta sẽ tạo IAM Groups cho người dùng vận hành workshop, sau đó thiết kế các IAM Policy và Role chuyên biệt cho từng dịch vụ Lambda và Step Functions trong hệ thống.
 

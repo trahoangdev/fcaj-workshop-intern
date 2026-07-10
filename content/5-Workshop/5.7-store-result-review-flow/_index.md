@@ -5,9 +5,6 @@ weight: 7
 chapter: false
 pre: " <b> 5.7. </b> "
 ---
-
-# Store Result and Build Review Flow
-
 ### 1. Goal
 Implement a persistent storage strategy using an **Offloading Pattern** between Amazon DynamoDB and Amazon S3. Deploy the three approved Data Lambdas (Get Document, List Documents, and Review Update) for the core review workflow. Delete Document, Dashboard, and Process Control are documented separately as optional project extensions.
 

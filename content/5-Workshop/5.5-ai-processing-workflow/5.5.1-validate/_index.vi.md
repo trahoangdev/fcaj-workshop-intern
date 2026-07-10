@@ -1,13 +1,10 @@
 ---
-title: "5.5.1 Validate Lambda"
+title: "Validate Lambda"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.5.1. </b> "
 ---
-
-# Hàm Validate Lambda (`docuflow-dev-workflow-validate-lambda`)
-
 Hàm này chịu trách nhiệm kiểm tra định dạng và kích thước tệp tin tải lên S3 Raw Bucket để đảm bảo tệp tin hợp lệ trước khi bắt đầu bóc tách.
 
 ---

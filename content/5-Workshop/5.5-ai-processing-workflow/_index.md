@@ -5,9 +5,6 @@ weight: 5
 chapter: false
 pre: " <b> 5.5. </b> "
 ---
-
-# AI Processing Workflow
-
 ### 1. Goal
 Establish an asynchronous AI processing workflow using **AWS Step Functions** to orchestrate four Lambda functions in sequence:
 1. **Input verification checks (Validate)**

@@ -1,13 +1,10 @@
 ---
-title: "5.5.3 AI Proxy Lambda"
+title: "AI Proxy Lambda"
 date: 2024-01-01
 weight: 3
 chapter: false
 pre: " <b> 5.5.3. </b> "
 ---
-
-# AI Proxy Lambda Function (`docuflow-dev-ai-proxy-lambda`)
-
 This function is responsible for retrieving the secure API Key from AWS Secrets Manager, sending a prompt to a Large Language Model (OpenAI GPT-4o) to normalize the raw JSON data structure extracted by Textract, and preserving the confidence scores.
 
 ---

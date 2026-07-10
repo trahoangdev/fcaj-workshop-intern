@@ -1,13 +1,10 @@
 ---
-title: "5.6.5 Khởi tạo hàm Job Starter Lambda"
+title: "Khởi tạo hàm Job Starter Lambda"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5.6.5. </b> "
 ---
-
-# Khởi tạo hàm Job Starter Lambda
-
 #### Lab 8: Khởi tạo hàm Job Starter Lambda (`docuflow-dev-ingestion-job-starter-lambda`)
 1. Truy cập **Lambda** -> nhấn **Create function** -> **Author from scratch**.
 2. **Function name**: `docuflow-dev-ingestion-job-starter-lambda`.

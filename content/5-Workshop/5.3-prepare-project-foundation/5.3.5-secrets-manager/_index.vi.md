@@ -1,13 +1,10 @@
 ---
-title: "5.3.5 Cấu hình Secrets Manager"
+title: "Cấu hình Secrets Manager"
 date: 2024-01-01
 weight: 5
 chapter: false
 pre: " <b> 5.3.5. </b> "
 ---
-
-# Lưu trữ API Key Bảo mật với Secrets Manager
-
 Chúng ta sẽ lưu trữ và mã hóa an toàn khóa truy cập (API Key) của External AI sử dụng dịch vụ AWS Secrets Manager. Khóa bí mật này sẽ được mã hóa bằng KMS Key của dự án, và chỉ duy nhất hàm AI Proxy Lambda mới có quyền lấy giá trị của nó.
 
 ### Chuẩn bị External AI API Key

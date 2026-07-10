@@ -1,13 +1,10 @@
 ---
-title: "5.5.1 Validate Lambda"
+title: "Validate Lambda"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.5.1. </b> "
 ---
-
-# Validate Lambda Function (`docuflow-dev-workflow-validate-lambda`)
-
 This Lambda function is responsible for checking file formatting and sizes on the S3 Raw Bucket to ensure only valid files propagate into the processing pipeline.
 
 ---

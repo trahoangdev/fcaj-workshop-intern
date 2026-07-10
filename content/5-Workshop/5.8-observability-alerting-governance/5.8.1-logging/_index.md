@@ -1,13 +1,10 @@
 ---
-title: "5.8.1 CloudWatch Logs & Filters"
+title: "CloudWatch Logs & Filters"
 date: 2024-01-01
 weight: 1
 chapter: false
 pre: " <b> 5.8.1. </b> "
 ---
-
-# Configure CloudWatch Logs and Custom Metrics
-
 **PART 1: SET UP LOG RETENTION SETTING**
 
 - Create CloudWatch log groups, metric filters/custom metrics if needed.

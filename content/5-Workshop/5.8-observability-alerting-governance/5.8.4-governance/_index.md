@@ -1,13 +1,10 @@
 ---
-title: "5.8.4 Governance & Audit Logs"
+title: "Governance & Audit Logs"
 date: 2024-01-01
 weight: 4
 chapter: false
 pre: " <b> 5.8.4. </b> "
 ---
-
-# Configure Audit Logging with AWS CloudTrail
-
 To track administrative API activities, monitor changes to infrastructure configuration, and maintain compliance auditing (Audit Logging), we will establish a trail using AWS CloudTrail.
 
 ---

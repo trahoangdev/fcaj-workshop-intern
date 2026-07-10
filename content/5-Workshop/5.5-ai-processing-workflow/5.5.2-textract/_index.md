@@ -1,13 +1,10 @@
 ---
-title: "5.5.2 Textract Lambda"
+title: "Textract Lambda"
 date: 2024-01-01
 weight: 2
 chapter: false
 pre: " <b> 5.5.2. </b> "
 ---
-
-# Textract Lambda Function (`docuflow-dev-ai-textract-lambda`)
-
 This Lambda function receives input parameters from Step Functions, invokes the Amazon Textract `AnalyzeExpense` API to perform raw OCR processing, and maps the output raw fields using dictionary mapping rules before passing them to the AI normalization step.
 
 ---

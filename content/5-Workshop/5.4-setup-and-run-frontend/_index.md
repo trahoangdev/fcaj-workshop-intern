@@ -5,9 +5,6 @@ weight: 4
 chapter: false
 pre: " <b> 5.4. </b> "
 ---
-
-# Setup and Run Frontend
-
 ### 1. Goal
 Download the Frontend source code (React/Vite), configure the environment variables to connect with AWS resources created in step 3, start the local development server, and verify user signup/login using Amazon Cognito, along with raw document uploads using S3 Presigned URLs.
 
