@@ -140,12 +140,3 @@ raw/{userId}/{documentId}/original.pdf
 ```
 
 Nếu trình duyệt báo lỗi CORS, cập nhật cấu hình CORS của API Gateway để allow domain Amplify, sau đó redeploy API stage.
-
----
-
-### 6. Tài liệu tham khảo
-
-* [Getting started with deploying an app to Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html)
-* [Setting up Amplify access to GitHub repositories](https://docs.aws.amazon.com/amplify/latest/userguide/setting-up-GitHub-access.html)
-* [Configuring the build settings for an Amplify application](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html)
-* [Setting environment variables](https://docs.aws.amazon.com/amplify/latest/userguide/setting-env-vars.html)

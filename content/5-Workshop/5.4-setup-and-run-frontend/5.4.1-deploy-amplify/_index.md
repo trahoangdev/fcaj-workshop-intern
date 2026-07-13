@@ -140,12 +140,3 @@ raw/{userId}/{documentId}/original.pdf
 ```
 
 If the browser reports a CORS error, update the API Gateway CORS configuration to allow the Amplify domain, then redeploy the API stage.
-
----
-
-### 6. References
-
-* [Getting started with deploying an app to Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html)
-* [Setting up Amplify access to GitHub repositories](https://docs.aws.amazon.com/amplify/latest/userguide/setting-up-GitHub-access.html)
-* [Configuring the build settings for an Amplify application](https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html)
-* [Setting environment variables](https://docs.aws.amazon.com/amplify/latest/userguide/setting-env-vars.html)

@@ -23,3 +23,4 @@ Hệ thống sử dụng các dịch vụ Serverless như **Amazon S3**, **Amazo
 8. [Giám sát, Cảnh báo & Quản trị hệ thống](5.8-observability-alerting-governance/)
 9. [Kiểm thử tích hợp End-to-End](5.9-end-to-end-testing/)
 10. [Dọn dẹp tài nguyên](5.10-clean-up/)
+11. [Tài liệu tham khảo](5.11-references/)

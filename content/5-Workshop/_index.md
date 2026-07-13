@@ -23,3 +23,4 @@ The system leverages serverless services including **Amazon S3**, **Amazon Dynam
 8. [Observability, alerting & governance](5.8-observability-alerting-governance/)
 9. [End-to-end testing](5.9-end-to-end-testing/)
 10. [Clean up resources](5.10-clean-up/)
+11. [References](5.11-references/)
