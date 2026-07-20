@@ -15,6 +15,10 @@ The approved architecture consists of several core blocks: Edge/Frontend, Authen
 
 **Figure 1 - DocuFlow AI architecture and processing flow**
 
+![DocuFlow AI architecture and processing flow](/images/5-Workshop/architecture/docuflow_high_level_architecture.png)
+
+**Figure 2 - DocuFlow AI architecture and processing flow**
+
 ![DocuFlow AI architecture and processing flow](/images/5-Workshop/architecture/DocuFlowAI-architecture-2.png)
 
 The high-level processing path is:

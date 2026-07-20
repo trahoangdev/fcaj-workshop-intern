@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-Trong suốt thời gian thực tập tại **Công ty TNHH Amazon Web Services Viet Nam** trong **12 tuần**, từ **17/04/2026** đến **10/07/2026**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường học tập và làm việc thực tế.  
+Trong suốt thời gian thực tập tại **Công ty TNHH Amazon Web Services Việt Nam** trong **15 tuần**, từ **17/04/2026** đến **30/07/2026**, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường học tập và làm việc thực tế.  
 Trong quá trình tham gia chương trình **First Cloud AI Journey**, tôi đã thực hành các nội dung liên quan đến AWS Cloud, nghiên cứu tài liệu kỹ thuật, tham gia các hoạt động cộng đồng, xây dựng worklog hằng tuần và phát triển đề tài **DocuFlow AI - nền tảng xử lý invoice và receipt bằng kiến trúc AWS serverless**. Qua đó, tôi cải thiện kỹ năng sử dụng các dịch vụ AWS như IAM, VPC, S3, EC2, Lambda, DynamoDB, API Gateway, Step Functions, Textract, CloudWatch, đồng thời rèn luyện kỹ năng phân tích kiến trúc, viết proposal, xây dựng workshop, quản lý chi phí và trình bày giải pháp kỹ thuật.
 
 Về tác phong, tôi luôn cố gắng hoàn thành các nhiệm vụ được giao, tuân thủ định hướng của chương trình, chủ động đọc tài liệu, thực hành theo workshop và tiếp nhận phản hồi để cải thiện chất lượng báo cáo cũng như dự án.
@@ -20,9 +20,9 @@ Về tác phong, tôi luôn cố gắng hoàn thành các nhiệm vụ được 
 | 2   | **Khả năng học hỏi**                | Tiếp thu kiến thức mới, học hỏi nhanh                                                            | ✅    | ☐  | ☐          |
 | 3   | **Chủ động**                        | Tự tìm hiểu, nhận nhiệm vụ mà không chờ chỉ dẫn                                                  | ✅   | ☐   | ☐          |
 | 4   | **Tinh thần trách nhiệm**           | Hoàn thành công việc đúng hạn, đảm bảo chất lượng                                                | ✅   | ☐   | ☐          |
-| 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ☐   | ✅  |  ☐          |
+| 5   | **Kỷ luật**                         | Tuân thủ giờ giấc, nội quy, quy trình làm việc                                                   | ✅   | ☐  |  ☐          |
 | 6   | **Tính cầu tiến**                   | Sẵn sàng nhận feedback và cải thiện bản thân                                                     | ✅   | ☐  | ☐          |
-| 7   | **Giao tiếp**                       | Trình bày ý tưởng, báo cáo công việc rõ ràng                                                     | ☐   | ✅   | ☐          |
+| 7   | **Giao tiếp**                       | Trình bày ý tưởng, báo cáo công việc rõ ràng                                                     |  ☐   | ✅   | ☐          |
 | 8   | **Hợp tác nhóm**                    | Làm việc hiệu quả với đồng nghiệp, tham gia nhóm                                                 | ✅   | ☐   | ☐          |
 | 9   | **Ứng xử chuyên nghiệp**            | Tôn trọng đồng nghiệp, đối tác, môi trường làm việc                                              | ✅   | ☐   | ☐          |
 | 10  | **Tư duy giải quyết vấn đề**        | Nhận diện vấn đề, đề xuất giải pháp, sáng tạo                                                    | ☐   | ✅   | ☐          |
