@@ -12,6 +12,7 @@ This page consolidates the references used throughout the **DocuFlow AI** projec
 
 * [Project source: AeroOps-AWS-FCAJ/aws-serverless-document-processing-workshop](https://github.com/AeroOps-AWS-FCAJ/aws-serverless-document-processing-workshop)
 * [DocuFlow AI demo on AWS Amplify](https://main.dm2pgk3pjz05m.amplifyapp.com/)
+* **Demo account:** `ziflapa@cuaks.fun` | `Tra_190704`
 
 ### 2. AWS architecture and best practices
 
